@@ -27,6 +27,26 @@ class Request
         return $body;
     }
 
+    public function getGet()
+    {
+        if ($this->reqMethod !== 'GET') return '';
+        $body = [];
+        foreach ($_POST as $key => $value) {
+            $body[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        return $body;
+    }
+
+    public function getFiles()
+    {
+        if ($this->reqMethod !== 'POST') return '';
+        $body = [];
+        foreach ($_FILES as $key => $value) {
+            $body[$key] = filter_input(INPUT_POST, $key);
+        }
+        return $body;
+    }
+
     public function getJSON(): array
     {
         if ($this->reqMethod !== 'POST') return [];

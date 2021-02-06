@@ -22,10 +22,11 @@ class Router
 
     public static function on($regex, $callback)
     {
-        $params = $_SERVER['REQUEST_URI'];
-        $params = (stripos($params, "/") !== 0) ? "/" . $params : $params;
+        $params = get_full_url();
+        $regex = base_url($regex);
         $regex = str_replace('/', '\/', $regex);
-        $is_match = preg_match('/' . ($regex) . '$/', $params, $matches, PREG_OFFSET_CAPTURE);
+        $is_match = preg_match('/^' . ($regex) . '$/', $params, $matches, PREG_OFFSET_CAPTURE);
+
         if ($is_match) {
             array_shift($matches);
             $params = array_map(function ($param) {
@@ -36,7 +37,7 @@ class Router
     }
 
     public static function to($route) {
-        header("Location : {$route}", true, 302);
+        header("Location: ".base_url($route), true, 302);
         die();
     }
 }

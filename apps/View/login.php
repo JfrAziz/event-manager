@@ -19,7 +19,7 @@
                     <h6 class="text-dark mb-2">SVCE-ACM Student Chapter</h6>
                     <h4 class="text-dark mb-4">Members Portal</h4>
                   </div>
-                  <form class="user" action="/login" method="POST">
+                  <form class="user" action="<?= base_url("/login") ?>" method="POST">
                     <div class="form-group">
                       <input class="form-control form-control-user" type="text" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Username..." name="username">
                     </div>

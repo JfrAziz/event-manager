@@ -7,6 +7,7 @@
     "autoload": {
         "psr-4": {
             "Apps\\": "apps/"
-        }
+        },
+        "files": ["apps/Lib/Helpers.php"]
     }
 }
