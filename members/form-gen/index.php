@@ -328,7 +328,7 @@
 															$html_file = $html_file.'<p id="'.$selected.'" style="color:red;font-size:12px;" ></p>
 															<div class="input-group"><div class="rs-select2 js-select-simple select--no-search"><select name="'.$selected.'" class="'.$selected.'"><option disabled="disabled" selected="selected" value="">'.ucwords($display_prompts[$selected]).'</option>'.$year_dropdown.'<div class="select-dropdown"></div></div></div>';
 														}else if($selected == "dept"){
-															$html_file=$html_file.'<p id="'.$selected.'" style="color:red;font-size:12px;" ></p><div class="input-group"><div class="rs-select2 js-select-simple select--no-search"><select name="'.$selected.'" class="'.$selected.'">
+															$html_file=$html_file.'<p id="'.$selected. '" style="color:#ff0000;font-size:12px;" ></p><div class="input-group"><div class="rs-select2 js-select-simple select--no-search"><select name="' .$selected.'" class="'.$selected.'">
 								<option disabled="disabled" selected="selected" value="">'.ucwords($display_prompts[$selected]).'</option>	'.$department_dropdown.'<div class="select-dropdown"></div></div></div>';
 														}else{
 															$html_file = $html_file.'<p id="'.$selected.'" style="color:red;font-size:12px;" ></p><div class="input-group">

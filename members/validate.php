@@ -3,6 +3,9 @@
 * Username and Password Validator
 * For CMS For Organisations
 */
+
+use Apps\Lib\Database;
+
 session_start();
 if((isset($_COOKIE["username"])) && (isset($_COOKIE["password"]))) {
 			$_POST['uname'] = $_COOKIE['username'];
@@ -25,17 +28,13 @@ if (!empty($_SESSION)) {
 if (!empty($_POST)) {
 	include("secrets_.php"); // Include Secret Keys such as APIs and override default database credentials
 	try{
-	    $conn = new PDO('mysql:dbname='.$MainDB.';host='.$servername.';charset=utf8', $username, $password);
-
-	    $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-	    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	    $conn = new Database();
+	    $conn = $conn->connect();
 	}catch(PDOException $e){
 	    $message = $e->getMessage()  ;
 	    header('Location:../public/error.html');
 	    die();
 	}
-
-	//$check_sql = 'CALL CheckUser("' . $_POST['uname'] . '","' . $_POST['password'] . '");';	// Call Procedures
 	$check_sql = $conn->prepare('CALL CheckUser(:uname,:password)');
 	$check_sql->bindValue(":uname",$_POST['uname']);
 	$check_sql->bindValue(":password",$_POST['password']);
@@ -77,9 +76,8 @@ if (!empty($_POST)) {
 		date_default_timezone_set('Asia/Kolkata');
 		$_SESSION['loginTime'] = date("Y-m-d H:i:s", time());
 
-		$conn = new PDO('mysql:dbname='.$MainDB.';host='.$servername.';charset=utf8', $username, $password);
-		$conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn = new Database();
+        $conn = $conn->connect();
 
 		$Log = "Logged in Successfully from " . $_POST['ipadd'];
 		$LogSQL = $conn->prepare('CALL enterLog(:uname,:log);');
