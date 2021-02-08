@@ -19,7 +19,7 @@
                     <h6 class="text-dark mb-2">SVCE-ACM Student Chapter</h6>
                     <h4 class="text-dark mb-4">Members Portal</h4>
                   </div>
-                  <form class="user" action="<?= base_url("/login") ?>" method="POST">
+                  <form class="user" action="<?= base_url("login") ?>" method="POST">
                     <div class="form-group">
                       <input class="form-control form-control-user" type="text" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Username..." name="username">
                     </div>
@@ -30,7 +30,7 @@
                     </button>
                   </form>
                   <div class="text-center">
-                    <a class="small" href="forgot-password.php">Forgot Password?</a>
+                    <a class="small" href="<?= base_url("forgot-password") ?>">Forgot Password?</a>
                   </div>
                   <div class="text-center">
                     <a class="small" href="/">Looking for our Certificate Distribution System (CDS)?</a>

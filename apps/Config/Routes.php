@@ -3,30 +3,53 @@
 namespace Apps\Config;
 
 use Apps\Controller\Auth;
+use Apps\Controller\Certificate;
 use Apps\Controller\Form;
 use Apps\Controller\Home;
+use Apps\Controller\Mail;
 use Apps\Controller\Member;
 use Apps\Lib\Request as Req;
 use Apps\Lib\Response as Res;
 use Apps\Lib\Router;
 
+// Public
+
 Router::get("/", function () {
-    (new Home())->index();
+    Home::index();
 });
 
+
+// Admin authentication and authorization 
+
 Router::get("/login", function () {
-    (new Auth())->login();
+    Auth::login();
 });
 
 Router::post("/login", function (Req $req, Res $res) {
-    (new Auth())->validate_login($req, $res);
+    Auth::validateLogin($req, $res);
 });
 
 Router::get("/logout", function () {
-    (new Auth())->logout();
+    Auth::logout();
 });
 
-// Member
+Router::get("/forgot-password", function () {
+    Auth::forgotPassword();
+});
+
+Router::post("/forgot-password", function () {
+    Auth::sendResetPassword();
+});
+
+Router::get("/reset-password", function () {
+    Auth::resetPassword();
+});
+
+Router::post("/reset-password", function () {
+    Auth::changePassword();
+});
+
+// Member Dashboard and profile
 
 Router::get("/member/dashboard", function () {
     (new Member())->index();
@@ -60,4 +83,22 @@ Router::get("/member/form", function () {
 
 Router::get("/member/form/reg", function (Req $req, Res $res) {
     (new Form())->registration($req);
+});
+
+
+// Mail
+
+Router::get("/member/mail", function () {
+    (new Mail())->index();
+});
+
+Router::get("/member/mail/list", function () {
+    (new Mail())->list();
+});
+
+
+// Cerricate
+
+Router::get("/member/certificate", function () {
+    (new Certificate())->index();
 });

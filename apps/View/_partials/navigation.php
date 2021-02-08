@@ -57,13 +57,13 @@ $retAlertsSQL = null;
 				<p class="mb-0">Media &amp; marketing</p>
 			</div>
 			<li class="nav-item" role="presentation">
-				<a class="nav-link" href="/members/cds-admin.php">
+				<a class="nav-link" href="<?= base_url("/member/certificate") ?>">
 					<i class="fas fa-medal"></i><span>Certificate Generator</span>
 				</a>
-				<a class="nav-link" href="/members/mailer.php">
+				<a class="nav-link" href="<?= base_url("/member/mail") ?>">
 					<i class="fas fa-mail-bulk"></i><span>Bulk Mailer</span>
 				</a>
-				<a class="nav-link" href="/members/mail-list.php">
+				<a class="nav-link" href="<?= base_url("/member/mail/list") ?>">
 					<i class="fas fa-list"></i><span>Update Mailing List</span>
 				</a>
 			</li>
@@ -78,11 +78,11 @@ $retAlertsSQL = null;
 					<i class="fab fa-wpforms"></i><span>Form Generator</span>
 				</a>
 			</li>
-			<li class="nav-item" role="presentation">
+			<!-- <li class="nav-item" role="presentation">
 				<a class="nav-link" href="<?= base_url("/member/link-short") ?>">
 					<i class="fas fa-link"></i><span>Link Shortner</span>
 				</a>
-			</li>
+			</li> -->
 			<li class="nav-item" role="presentation">
 				<a class="nav-link" href="<?= base_url("/member/form/reg") ?>">
 					<i class="fa fa-eye"></i><span>View Registration</span>
@@ -91,7 +91,7 @@ $retAlertsSQL = null;
 
 			<hr class="sidebar-divider">
 
-			<div class="sidebar-heading">
+			<!-- <div class="sidebar-heading">
 				<p class="mb-0">Admin Stuff</p>
 			</div>
 			<li class="nav-item" role="presentation">
@@ -99,7 +99,7 @@ $retAlertsSQL = null;
 					<i class="fas fa-database"></i><span>Maintenance</span>
 				</a>
 			</li>
-			<hr class="sidebar-divider">
+			<hr class="sidebar-divider"> -->
 		</ul>
 
 		<div class="text-center d-none d-md-inline">

@@ -12,14 +12,30 @@ use PDO;
 class Auth extends Controller
 {
 
-    public function login()
+    /**
+     * login
+     * 
+     * Open view for login
+     *
+     * @return void
+     */
+    public static function login()
     {
         session_start();
         if (!empty($_SESSION)) Router::to("/member/dashboard");
         self::view("login");
     }
 
-    public function validate_login(Request $request, Response $response)
+    /**
+     * validateLogin
+     *
+     * validate user login
+     * 
+     * @param  mixed $request
+     * @param  mixed $response
+     * @return void
+     */
+    public static function validateLogin(Request $request, Response $response)
     {
         $data = $request->getBody();
         $username = $data['username'];
@@ -43,20 +59,68 @@ class Auth extends Controller
         Router::to("/member/dashboard");
     }
 
-    public function logout()
+    /**
+     * logout
+     *
+     * logout current user and destroy the session
+     * 
+     * @return void
+     */
+    public static function logout()
     {
         session_start();
         session_destroy();
         Router::to("/login");
     }
-
-    public function forgotPassword()
+    
+    /**
+     * forgotPassword
+     * 
+     * Open forgot password view
+     *
+     * @return void
+     */
+    public static function forgotPassword()
     {
         self::view("forgot-password");
     }
 
-    public function resetPassword()
+    
+    /**
+     * sendResetPassword
+     * 
+     * send reset password
+     *
+     * @return void
+     */
+    public static function sendResetPassword(){
+
+    }
+    
+    /**
+     * resetPassword
+     * 
+     * reset password
+     *
+     * @return void
+     */
+    public static function resetPassword()
     {
-        self::view("reset-password");
+        $data = [
+            "gen" => 1223
+        ];
+        self::view("reset-password", $data);
+    }
+    
+    /**
+     * changePassword
+     *
+     * change password from reset password
+     * 
+     * @return void
+     */
+    public static function changePassword()
+    {
+
     }
 }

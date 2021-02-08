@@ -6,7 +6,8 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Apps\\": "apps/"
+            "Apps\\": "apps/",
+            "Config\\" : "apps/Config"
         },
         "files": ["apps/Lib/Helpers.php"]
     }

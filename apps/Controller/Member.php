@@ -46,7 +46,7 @@ class Member extends Controller
         $image_src = $userData['imgsrc'] == "" ? "/assets/img/avatars/image2.png" : "/assets/img/avatars/users/" . $userData['imgsrc'];
 
         $data = [
-            "data" => $userData,
+            "data"      => $userData,
             "image_src" => $image_src
         ];
         self::view("profile", $data);

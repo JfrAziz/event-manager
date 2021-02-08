@@ -31,7 +31,7 @@ class Request
     {
         if ($this->reqMethod !== 'GET') return '';
         $body = [];
-        foreach ($_POST as $key => $value) {
+        foreach ($_GET as $key => $value) {
             $body[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
         }
         return $body;

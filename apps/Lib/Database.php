@@ -3,7 +3,7 @@
 namespace Apps\Lib;
 
 use \PDO;
-use \Apps\Config\Database as DatabaseConf;
+use \Config\Database as DatabaseConf;
 
 class Database
 {

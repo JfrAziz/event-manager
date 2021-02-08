@@ -22,7 +22,7 @@ class Router
 
     public static function on($regex, $callback)
     {
-        $params = get_full_url();
+        $params = strtok(get_url(),"?");
         $regex = base_url($regex);
         $regex = str_replace('/', '\/', $regex);
         $is_match = preg_match('/^' . ($regex) . '$/', $params, $matches, PREG_OFFSET_CAPTURE);
