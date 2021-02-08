@@ -3,7 +3,9 @@
     "description": "Resource and Event Management System, Fork from https://github.com/bearlike/REMS-For-Organisations",
     "type": "project",
     "license": "MIT",
-    "require": {},
+    "require": {
+        "phpmailer/phpmailer": "^6.2"
+    },
     "autoload": {
         "psr-4": {
             "Apps\\": "apps/",
