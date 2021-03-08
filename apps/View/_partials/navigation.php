@@ -37,7 +37,7 @@ $retAlertsSQL = null;
 
 		<a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
 			<div class="sidebar-brand-icon">
-				<img class="logo" src="<?= base_url("/assets/img/Logo_Banner_White.png") ?>">
+				<img class="logo" src="https://dummyimage.com/1035x365">
 			</div>
 			<div class="sidebar-brand-text mx-3"></div>
 		</a>
