@@ -2,7 +2,7 @@
 <html>
 <?php include_once "_partials/head.php" ?>
 
-<body class="bg-gradient-primary">
+<body>
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-9 col-lg-12 col-xl-10">
@@ -10,7 +10,7 @@
           <div class="card-body p-0">
             <div class="row">
               <div class="col-lg-6 d-none d-lg-flex">
-                <div class="flex-grow-1 bg-password-image" style="background-image: url(&quot;../assets/img/front/image2.png&quot;);"></div>
+                <div class="flex-grow-1 bg-password-image" style="background-image: url(&quot;https://dummyimage.com/600x800&quot;);"></div>
               </div>
               <div class="col-lg-6">
                 <div class="p-5">

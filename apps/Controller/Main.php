@@ -34,8 +34,5 @@ class Main extends Controller
         $retProfilePicSQL->bindValue(":loggedOnUser", $loggedOnUser);
         $retProfilePicSQL->execute();
 
-        foreach ($retProfilePicSQL as $row) {
-            return Config::$startPath . '/assets/img/avatars/users/' . $row["imgsrc"];
-        }
     }
 }

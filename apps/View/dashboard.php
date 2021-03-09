@@ -25,7 +25,7 @@
                         <span>Registrations for <?= ucwords(str_replace("event ", "", (str_replace("_", " ", $event_table)))); ?> (Latest)</span>
                       </div>
                       <div class="text-dark font-weight-bold h5 mb-0">
-                        <span>$registrationCount</span>
+                        <span>0</span>
                       </div>
                     </div>
                     <div class="col-auto">

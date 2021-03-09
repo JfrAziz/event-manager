@@ -44,7 +44,7 @@ class Auth extends Controller
         if ($username == null || $password == null) Router::to("/login");
 
         $conn = (new Database())->connect();
-        $check_sql = $conn->prepare('CALL CheckUser(:uname,:password)');
+        $check_sql = $conn->prepare('SELECT COUNT(*) as code FROM login WHERE LoginName=:uname && PasswordHash=SHA(:password);');
         $check_sql->bindValue(":uname", $username);
         $check_sql->bindValue(":password", $password);
         $check_sql->execute();
