@@ -18,11 +18,6 @@
                   <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Download Sample CSV for CDS&nbsp;
                 </a>
               </div>
-              <style>
-                .upload-btn-wrapper input[type=file] {
-                  opacity: 0;
-                }
-              </style>
             </div>
             <div class="card-body">
               <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
@@ -35,22 +30,6 @@
                         <i class="fa fa-upload" aria-hidden="true"></i>
                       </a>
                     </div>
-                    <script type="text/javascript">
-                      // To hide the ugly file upload input and replace it with a button
-                      window.onload = function() {
-                        var fileupload = document.getElementById("myFile");
-                        var filePath = document.getElementById("spnFilePath");
-                        var button = document.getElementById("btnFileUpload");
-                        button.onclick = function() {
-                          fileupload.click();
-                        };
-                        fileupload.onchange = function() {
-                          var fileName = fileupload.value.split('\\')[fileupload.value
-                            .split('\\').length - 1];
-                          filePath.value = fileName;
-                        };
-                      };
-                    </script>
                   </div>
                   <div class="col-md-6 pt-3">
                     <input type="text" name="event_name" class="form-control border-1 small" placeholder="Enter the Event Name" required />
@@ -84,11 +63,26 @@
           </div>
         </div>
       </div>
-      
+
       <?php include_once "_partials/footer.php" ?>
     </div>
   </div>
   <?php include_once "_partials/scripts.php" ?>
+  <script type="text/javascript">
+    window.onload = function() {
+      var fileupload = document.getElementById("myFile");
+      var filePath = document.getElementById("spnFilePath");
+      var button = document.getElementById("btnFileUpload");
+      button.onclick = function() {
+        fileupload.click();
+      };
+      fileupload.onchange = function() {
+        var fileName = fileupload.value.split('\\')[fileupload.value
+          .split('\\').length - 1];
+        filePath.value = fileName;
+      };
+    };
+  </script>
 </body>
 
 </html>

@@ -16,59 +16,59 @@
             </div>
             <div class="card-body">
               <form action="" method="post">
-                <div class="form-row" id="choose-list" style="margin-left: 10px;margin-top: 0px;margin-right: 10px;padding-top: 0px;">
-                  <div class="col">
-                    <select name="mailing_list" class="form-control border-1 small" style="width:40%">
+                <div class="row">
+                  <div class="col form-group">
+                    <select name="mailing_list" class="form-control border-1 small">
                       <option disabled selected>Select Mailing list</option>
                     </select>
                   </div>
                 </div>
-                <div class="form-row" id="subject" style="margin-left: 10px;margin-top: 14px;margin-right: 10px;">
+                <div class="row">
                   <div class="col">
                     <div class="form-group">
                       <input class="form-control form-control" type="text" placeholder="Subject" required="" name="mail_subject">
                     </div>
                   </div>
                 </div>
-                <div class="form-row" id="subject" style="margin-left: 10px;margin-top: 14px;margin-right: 10px;">
+                <div class="row">
                   <div class="col">
                     <div class="form-group">
                       <input class="form-control form-control" type="text" placeholder="Title of the E-mail" required="" name="mail_title" id="mail_title">
                     </div>
                   </div>
                 </div>
-                <div class="form-row" id="subject" style="margin-left: 10px;margin-top: 14px;margin-right: 10px;">
-                  <div class="col">
+                <div class="row">
+                  <div class="col-md-6">
                     <div class="form-group">
-                      <input class="form-control form-control" type="text" placeholder="Button label" required="" name="mail_button_label" id="mail_button_label" value="">
+                      <input class="form-control form-control" type="text" placeholder="Button label" required="" name="mail_button_label" id="mail_button_label">
                     </div>
                   </div>
-                  <div class="col">
+                  <div class="col-md-6">
                     <div class="form-group">
-                      <input class="form-control form-control" type="text" placeholder="Button URL" required="" name="mail_button_url" id="mail_button_url" value="">
-                    </div>
-                  </div>
-                </div>
-                <div class="form-row" id="subject" style="margin-left: 10px;margin-top: 14px;margin-right: 10px;">
-                  <div class="col">
-                    <div class="form-group">
-                      <input class="form-control form-control" type="text" placeholder="Logo URL" required="" name="mail_logo_url" id="mail_logo_url" value="">
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="form-group">
-                      <input class="form-control form-control" type="text" placeholder="Cover Image URL" required="" name="mail_coverimg_url" id="mail_coverimg_url" value="">
+                      <input class="form-control form-control" type="text" placeholder="Button URL" required="" name="mail_button_url" id="mail_button_url">
                     </div>
                   </div>
                 </div>
-                <div class="form-row" id="body" style="margin-left: 10px;margin-top: 14px;margin-right: 10px;">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input class="form-control form-control" type="text" placeholder="Logo URL" required="" name="mail_logo_url" id="mail_logo_url">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input class="form-control form-control" type="text" placeholder="Cover Image URL" required="" name="mail_coverimg_url" id="mail_coverimg_url" >
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
                   <div class="col">
                     <div class="form-group">
                       <textarea class="form-control form-control" placeholder="Mail Body" required="" style="height: 350px;min-height: 250px;" name="mail_body" id="mail_body"></textarea>
                     </div>
                   </div>
                 </div>
-                <div class="form-row" id="submit-btn" style="margin-left: 10px;margin-top: 14px;margin-right: 10px;">
+                <div class="row">
                   <div class="col center">
                     <div class="form-group">
                       <button class="btn btn-primary" type="submit" name="submit">&nbsp;

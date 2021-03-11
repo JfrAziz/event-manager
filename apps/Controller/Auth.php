@@ -44,19 +44,24 @@ class Auth extends Controller
         if ($username == null || $password == null) Router::to("/login");
 
         $conn = (new Database())->connect();
-        $check_sql = $conn->prepare('SELECT COUNT(*) as code FROM login WHERE LoginName=:uname && PasswordHash=SHA(:password);');
+        $check_sql = $conn->prepare('SELECT COUNT(*) as result FROM login WHERE LoginName=:uname && PasswordHash=SHA(:password);');
         $check_sql->bindValue(":uname", $username);
         $check_sql->bindValue(":password", $password);
         $check_sql->execute();
         $result = $check_sql->fetchAll(PDO::FETCH_ASSOC);
-        $count = $result[0]['code'];
+        $count = $result[0]['result'];
 
-        if ($count != 1) Router::to("/login");
+        if ($count != 1) return Router::to("/login");
+
+        $user_data = $conn->prepare('SELECT * FROM login WHERE LoginName=:uname;');
+        $user_data->bindValue(":uname", $username);
+        $user_data->execute();
+        $result = $user_data->fetchAll(PDO::FETCH_ASSOC);
 
         session_start();
-        $_SESSION['uname']      = $username;
+        $_SESSION = $result[0];
         $_SESSION['loginTime'] = date("Y-m-d H:i:s", time());
-        Router::to("/member/dashboard");
+        return Router::to("/member/dashboard");
     }
 
     /**
@@ -70,7 +75,7 @@ class Auth extends Controller
     {
         session_start();
         session_destroy();
-        Router::to("/login");
+        Router::to("/");
     }
     
     /**
