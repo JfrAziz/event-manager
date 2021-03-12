@@ -51,6 +51,10 @@ Router::post("/reset-password", function () {
 
 // Member Dashboard and profile
 
+Router::get("/member", function () {
+    (new Member())->index();
+});
+
 Router::get("/member/dashboard", function () {
     (new Member())->index();
 });
@@ -90,6 +94,10 @@ Router::get("/member/form/reg", function (Req $req, Res $res) {
 
 Router::get("/member/mail", function () {
     (new Mail())->index();
+});
+
+Router::post("/member/sendEmail", function () {
+    (new Mail())->send();
 });
 
 Router::get("/member/mail/list", function () {
