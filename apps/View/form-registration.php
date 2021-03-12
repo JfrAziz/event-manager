@@ -20,7 +20,7 @@
             </a>
           </div>
           <div class="row">
-            <div class="col-md-6 col-xl-3 mb-4">
+            <div class="col-md-9 mb-4">
               <form action="" method="GET">
                 <select onchange="this.form.submit()" class="form-control border-1 small" style="width: 68%;max-width:15em;" name="event" required>
                   <option value="">Select an event</option>
@@ -31,9 +31,7 @@
                 </select><br>
               </form>
             </div>
-            <div class="col-md-6 col-xl-3 mb-4"></div>
-            <div class="col-md-6 col-xl-3 mb-4"></div>
-            <div class="col-md-6 col-xl-3 mb-4">
+            <div class="col-md-3 mb-4">
               <div class="card shadow border-left-success py-2">
                 <div class="card-body">
                   <div class="row align-items-center no-gutters">
@@ -112,7 +110,6 @@
                   </tfoot>
                 </table>
               </div>
-
               <div class="row">
                 <div class="col-md-6 align-self-center">
                   <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite"></p>

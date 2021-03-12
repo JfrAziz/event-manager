@@ -23,7 +23,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="form-row" id="body" style="margin-left: 3px;margin-top: 10px;margin-right: 3px;">
                   <div class="col">
                     <div class="form-group">
@@ -31,7 +30,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="form-row" id="error-msg" style="margin-left: 3px;margin-top: 10px;margin-right: 3px; margin-bottom: -7px; display: none;">
                   <div class="col">
                     <div class="alert alert-danger" role="alert" style="padding: 0 3px 0 5px; margin-top: -22px;margin-bottom: 0; font-size: 12px;">
@@ -105,7 +103,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="form-row" id="submit-btn">
                   <div class="col center">
                     <div class="form-group" style="margin-bottom: 10px;">

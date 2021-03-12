@@ -8,6 +8,7 @@ class Home extends Controller
 {
     public static function index()
     {
+        session_start();
         self::view("homepage");
     }
 }
