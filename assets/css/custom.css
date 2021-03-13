@@ -1,3 +1,91 @@
+/* custom style bulk mailer */
+.btn-xs {
+    font-size: 11px;
+    padding: 2px 6px 2px 6px;
+}
+
+#user_table_filter input {
+    border-radius: 7px;
+}
+
+#user_table_filter label,
+#user_table_info {
+    color: rgba(107, 114, 128)
+}
+
+#user_table_info {
+    font-size: 12.5px;
+}
+
+#user_table tr td {
+    padding: 3px 10px 3px 10px;
+}
+
+#user_table tr th {
+    padding: 6px 10px 6px 10px;
+}
+
+@media (max-width: 450px) {
+    #user_table_filter input {
+        width: 150px;
+    }
+}
+
+#user_table_filter input {
+    transform: translate(-5px, 3px);
+    margin-bottom: 3px;
+    padding-left: 25px;
+}
+
+#user_table_filter label {
+    position: relative;
+}
+
+@media (max-width: 500px) {
+    #konfir p {
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 501px) {
+    #konfir p {
+        font-size: 16.5px;
+    }
+}
+
+.buttonBatal:hover {
+    color: rgba(75, 85, 99);
+    border: 1px solid rgba(75, 85, 99);
+}
+
+.buttonBatal {
+    color: black;
+    border: 1px solid black;
+}
+
+.buttonBatal+div {
+    background-color: rgb(55, 93, 305);
+}
+
+.buttonBatal+div:hover {
+    background-color: rgb(55, 93, 205);
+}
+
+.popover-body {
+    color: rgb(184, 122, 4);
+}
+
+.popover {
+    background-color: rgb(255, 243, 205);
+}
+
+.popover .arrow::after,
+.popover .arrow::after {
+    border-top-color: rgb(255, 243, 205);
+}
+
+/* custom style bulk mailer */
+
 .logo {
     width: 100%;
     height: auto;
@@ -21,7 +109,7 @@
 
 .upload-btn-wrapper input[type=file] {
     opacity: 0;
-  }
+}
 
 /* #mode_toggler{
     font-size: 22px !important;
@@ -135,27 +223,27 @@
 
 /* width */
 
- ::-webkit-scrollbar {
+::-webkit-scrollbar {
     width: 10px;
 }
 
 
 /* Track */
 
- ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
 
 
 /* Handle */
 
- ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background: #888;
 }
 
 
 /* Handle on hover */
 
- ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
     background: #555;
 }

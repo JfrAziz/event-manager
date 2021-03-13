@@ -1,34 +1,34 @@
 <?php
 
-use Apps\Lib\Database;
+// use Apps\Lib\Database;
 
-$displayCircles = [
-	'normal'  => '<div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>',
-	'success' => '<div class="bg-success icon-circle"><i class="fas fa-crosshairs text-white"></i></div>',
-	'info'    => '<div class="bg-success icon-circle"><i class="fas fa-info-circle text-white"></i></div>',
-	'warning' => '<div class="bg-warning icon-circle"><i class="fas fa-exclamation-triangle text-white"></i></div>'
-];
+// $displayCircles = [
+// 	'normal'  => '<div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>',
+// 	'success' => '<div class="bg-success icon-circle"><i class="fas fa-crosshairs text-white"></i></div>',
+// 	'info'    => '<div class="bg-success icon-circle"><i class="fas fa-info-circle text-white"></i></div>',
+// 	'warning' => '<div class="bg-warning icon-circle"><i class="fas fa-exclamation-triangle text-white"></i></div>'
+// ];
 
-$alertCount = 0;
-$readReamining = "";
+// $alertCount = 0;
+// $readReamining = "";
 
-$navConn = (new Database())->connect();
-$retAlertsSQL = $navConn->prepare('select notification.timestamp, notification.user, notification.message, notification.type, notification.clickURL, login.imgsrc from notification, login where notification.user=login.LoginName order by notification.id desc limit 3;');
-$retAlertsSQL->execute();
-$alertSQLResults  = $retAlertsSQL->fetchAll(PDO::FETCH_ASSOC);
+// $navConn = (new Database())->connect();
+// $retAlertsSQL = $navConn->prepare('select notification.timestamp, notification.user, notification.message, notification.type, notification.clickURL, login.imgsrc from notification, login where notification.user=login.LoginName order by notification.id desc limit 3;');
+// $retAlertsSQL->execute();
+// $alertSQLResults  = $retAlertsSQL->fetchAll(PDO::FETCH_ASSOC);
 
-foreach ($alertSQLResults as $rowAlert) {
-	$alertArray[$alertCount]["timestamp"] = $rowAlert["timestamp"];
-	$alertArray[$alertCount]["user"]      = $rowAlert["user"];
-	$alertArray[$alertCount]["message"]   = $rowAlert["message"];
-	$alertArray[$alertCount]["type"]      = $rowAlert["type"];
-	$alertArray[$alertCount]["clickURL"]  = $rowAlert["clickURL"];
-	$alertArray[$alertCount]["imgsrc"]    = $rowAlert["imgsrc"];
-	$alertCount++;
-}
+// foreach ($alertSQLResults as $rowAlert) {
+// 	$alertArray[$alertCount]["timestamp"] = $rowAlert["timestamp"];
+// 	$alertArray[$alertCount]["user"]      = $rowAlert["user"];
+// 	$alertArray[$alertCount]["message"]   = $rowAlert["message"];
+// 	$alertArray[$alertCount]["type"]      = $rowAlert["type"];
+// 	$alertArray[$alertCount]["clickURL"]  = $rowAlert["clickURL"];
+// 	$alertArray[$alertCount]["imgsrc"]    = $rowAlert["imgsrc"];
+// 	$alertCount++;
+// }
 
-$navConn = null;
-$retAlertsSQL = null;
+// $navConn = null;
+// $retAlertsSQL = null;
 
 ?>
 
