@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-    $('#user_table_filter input').attr('placeholder', 'Cari')
-
     var oTable = $('#user_table').DataTable({
         "dom": '<"top"<"pull-left"f><"pull-right"l>>rt<"bottom"<"pull-left"i><"pull-right"p>>',
         stateSave: true,
@@ -49,13 +47,13 @@ $(document).ready(function () {
         var fd = new FormData(document.getElementById('form'));
 
         if (file.length > 0) {
-            $.each(file, function (i, val) {
+            $.each(file, function (val) {
                 fd.append('files[]', val)
             });
         }
-
+        console.log(file);
         fd.append('email_data', JSON.stringify(email_data));
-
+        console.log(fd);
         $.ajax({
             url: "sendEmail",
             method: "POST",
@@ -64,48 +62,43 @@ $(document).ready(function () {
             contentType: false,
             processData: false,
             beforeSend: function () {
-                $('#' + id).html('Mengirim...');
-                $('#' + id).removeClass('btn-primary')
-                $('#' + id).addClass('btn-danger');
+                $('#' + id).toggleClass('d-none')
+                $('.btn-loading').toggleClass('d-none').css('cursor', 'not-allowed')
             },
             success: function (data) {
                 if (data == 'ok' || data.includes(' 25MB.') || data.includes('Kode error upload file')) {
                     if (data.includes(' 25MB.')) {
-                        $('#error-file').css('display', 'block')
-                        $('#error-file').children().first().children().first().removeClass('alert-danger').addClass('alert-warning')
-                        $('#error-file').children().first().children().first().html(data)
+                        $('#error-file').removeClass('d-none')
+                        $('#error-file').removeClass('alert-danger').addClass('alert-warning')
+                        $('#error-file').children().first().html(data)
                     } else if (data.includes('Kode error upload file')) {
-                        $('#error-file').css('display', 'block')
-                        $('#error-file').children().first().children().first().html(data)
+                        $('#error-file').removeClass('d-none')
+                        $('#error-file').children().first().html(data)
                     }
-                    $('#msg-send').css('display', 'block')
-                    $('#msg-send').children().first().children().first().removeClass('btn-danger').addClass('btn-success').css('text-align', 'center')
-                    $('#msg-send').children().first().children().first().text('Email Berhasil Dikirim')
+                    $('#msg-send').removeClass('d-none')
+                    $('#msg-send').removeClass('btn-danger').addClass('btn-success').css('text-align', 'center')
+                    $('#msg-send').children().first().text('Email Berhasil Dikirim')
+                    $('form').trigger('reset')
+                    $('#file').prev('label').text('Pilih file')
                 } else {
-                    $('#msg-send').css('display', 'block')
-                    $('#msg-send').children().first().children().first().removeClass('btn-success').addClass('btn-danger').css('text-align', 'justify')
-                    $('#msg-send').children().first().children().first().text(data)
+                    $('#msg-send').removeClass('d-none')
+                    $('#msg-send').removeClass('btn-success').addClass('btn-danger').css('text-align', 'justify')
+                    $('#msg-send').children().first().text(data)
                 }
-                $('#' + id).html(`
-                  <i class="fa fa-send" style="margin-right: 10px;"></i>Kirim Pesan
-                  `)
-                $('#' + id).removeClass('btn-danger')
-                $('#' + id).addClass('btn-primary');
-                $('#' + id).attr('disabled', false)
-                $('#' + id).css('cursor', 'pointer')
+                $('#' + id).toggleClass('d-none')
+                $('.btn-loading').toggleClass('d-none').css('cursor', 'pointer')
             }
         })
     }
 
     $('#btn-send').click(function (e) {
         var msg_empty = true
-        $('#error-file').css('display', 'none')
-        $('#error-file').css('display', 'none').children().first().children().first().removeClass('alert-warning').addClass('alert-danger')
-        $('#msg-send').css('display', 'none')
+        $('#error-file').addClass('d-none').removeClass('alert-warning').addClass('alert-danger')
+        $('#msg-send').addClass('d-none')
         if (!$('#mail_body').val()) {
-            $('#error-msg').css('display', 'block')
+            $('#error-msg').removeClass('d-none')
         } else {
-            $('#error-msg').css('display', 'none')
+            $('#error-msg').addClass('d-none')
             msg_empty = false
         }
 
@@ -129,8 +122,7 @@ $(document).ready(function () {
 
         if (!cek_select || msg_empty) return
 
-        var konfir = true;
-        var total_size = 0;
+        var total_size = 0
         var file = $('#file')[0].files;
         if (file.length > 1) {
             konfir = false
@@ -139,11 +131,11 @@ $(document).ready(function () {
             });
         } else if (file.length == 1) {
             if (file[0]['size'] > 1048576) {
-                $('#error-file').css('display', 'block')
-                $('#error-file').children().first().children().first().text('Batas mengirim file 25MB.')
-                $('#msg-send').css('display', 'block')
-                $('#msg-send').children().first().children().first().removeClass('btn-success').addClass('btn-danger').css('text-align', 'center')
-                $('#msg-send').children().first().children().first().text('Gagal mengirim email')
+                $('#error-file').removeClass('d-none')
+                $('#error-file').children().first().text('Batas mengirim file 25MB.')
+                $('#msg-send').removeClass('d-none')
+                $('#msg-send').removeClass('btn-success').addClass('btn-danger').css('text-align', 'center')
+                $('#msg-send').children().first().text('Gagal mengirim email')
                 return
             } else {
                 konfir = true;
@@ -190,19 +182,15 @@ $(document).ready(function () {
                     });
                     setTimeout(function () {
                         $('#konfir').remove()
-                        $('#btn-send').attr('disabled', 'disabled')
-                        $('#btn-send').css('cursor', 'not-allowed')
-
                         ajax(file, email_data, id)
                     }, 400);
                 }
             })
+        } else {
+            konfir = true
         }
 
         if (konfir) {
-            $(this).attr('disabled', 'disabled')
-            $(this).css('cursor', 'not-allowed')
-
             ajax(file, email_data, id)
         }
     });

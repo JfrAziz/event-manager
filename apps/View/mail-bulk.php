@@ -15,7 +15,7 @@
               <p class="text-primary m-0 font-weight-bold">Bulk Mailer</p>
             </div>
             <div class="card-body" style="margin-left: -5px; margin-right: -5px;">
-              <form method="POST" action="send.php" id="form" enctype="multipart/form-data">
+              <form name="form" method="POST" action="send.php" id="form" enctype="multipart/form-data">
                 <div class="form-row" id="subject" style="margin-left: 3px;margin-top: 20px;margin-right: 3px;">
                   <div class="col">
                     <div class="form-group">
@@ -30,15 +30,14 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-row" id="error-msg" style="margin-left: 3px;margin-top: 10px;margin-right: 3px; margin-bottom: -7px; display: none;">
-                  <div class="col">
-                    <div class="alert alert-danger" role="alert" style="padding: 0 3px 0 5px; margin-top: -22px;margin-bottom: 0; font-size: 12px;">
-                      Pesan Harus Diisi
-                    </div>
-                  </div>
+                <div id="error-msg" class="alert alert-danger alert-dismissible d-none" role="alert" style="padding: 0 10px 0 10px; margin: -12px 8px -6px 8px;">
+                  <div style="font-size: 12px;">Pesan Harus Diisi.</div>
+                  <button type="button" onclick="$('#error-msg').addClass('d-none')" class="close" aria-label="Close" style="padding: 0 8px 0 8px; margin-top: -5px; outline: none;">
+                    <span aria-hidden="true" style="font-size: 20px;">&times;</span>
+                  </button>
                 </div>
 
-                <div class="form-row" id="file-body" style="margin-left: 3px;margin-top: 10px;margin-right: 3px; margin-bottom: 26px;">
+                <div class="form-row" id="file-body" style="margin-left: 3px;margin-top: 10px;margin-right: 3px; margin-bottom: 22px;">
                   <div class="col">
                     <div class="custom-file">
                       <label class="custom-file-label" for="file-upload" style="white-space: nowrap;overflow: hidden;text-overflow: clip;">Pilih file</label>
@@ -47,12 +46,11 @@
                   </div>
                 </div>
 
-                <div class="form-row" id="error-file" style="margin-left: 3px;margin-top: 10px;margin-right: 3px; margin-bottom: -3px; display: none;">
-                  <div class="col">
-                    <div class="alert alert-danger" role="alert" style="padding: 0 3px 0 5px; margin-top: -22px;margin-bottom: 5px; font-size: 12px;">
-                      Error Upload
-                    </div>
-                  </div>
+                <div id="error-file" class="alert alert-danger alert-dismissible d-none" role="alert" style="padding: 0 25px 0 10px; margin: -19px 8px 1px 8px;">
+                  <div style="font-size: 12px; overflow-wrap: break-word; text-align: justify;">Error Upload.</div>
+                  <button type="button" onclick="$('#error-file').addClass('d-none')" class="close" aria-label="Close" style="padding: 0 8px 0 8px; margin-top: -5px; outline: none;">
+                    <span aria-hidden="true" style="font-size: 20px;">&times;</span>
+                  </button>
                 </div>
 
                 <div class="table-responsive table">
@@ -96,18 +94,22 @@
                   </div>
                 </div>
 
-                <div class="form-row" id="msg-send" style="margin-left: 6px;margin-right: 6px; margin-bottom: 5px;margin-top: -7px; display: none;">
-                  <div class="col">
-                    <div class="alert" role="alert" style="padding: 0 3px 0 5px; margin-top: -12px;margin-bottom: 0; font-size: 12px;word-break: break-all;">
-                      Send Message
-                    </div>
-                  </div>
+                <div id="msg-send" class="alert alert-dismissible d-none" role="alert" style="padding: 0 10px 0 10px; margin: -17px 10px 3px 10px;">
+                  <div style="font-size: 12px; overflow-wrap: break-word;">Pesan Pengiriman</div>
+                  <button type="button" onclick="$('#msg-send').addClass('d-none')" class="close" aria-label="Close" style="padding: 0 8px 0 8px; margin-top: -5px; outline: none;">
+                    <span aria-hidden="true" style="font-size: 20px;">&times;</span>
+                  </button>
                 </div>
+
                 <div class="form-row" id="submit-btn">
                   <div class="col center">
                     <div class="form-group" style="margin-bottom: 10px;">
                       <button type="button" id="btn-send" class="btn btn-primary">
                         <i class="fa fa-send" style="margin-right: 10px;"></i>Kirim Pesan
+                      </button>
+                      <button class="btn btn-primary btn-loading d-none" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Mengirim...
                       </button>
                     </div>
                   </div>

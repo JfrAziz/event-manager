@@ -42,10 +42,10 @@ class Mail extends Controller
                 $mail->Host = 'smtp.gmail.com';
                 $mail->Port = 465;
                 $mail->SMTPAuth = true;
-                $mail->Username = 'alamatEmail';
-                $mail->Password = 'passwordEmail';
+                $mail->Username = 'aldi1hamidi9@gmail.com';
+                $mail->Password = 'Stisks0101';
                 $mail->SMTPSecure = 'ssl';
-                $mail->From = 'alamatEmail';
+                $mail->From = 'aldihamidi9@gamil.com';
                 $mail->FromName = 'Event Manajemen STIS';
                 $mail->AddAddress($row["email"], $row["name"]);
                 $mail->WordWrap = 50;
