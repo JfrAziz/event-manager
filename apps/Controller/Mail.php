@@ -22,11 +22,11 @@ class Mail extends Controller
     public function index()
     {
         $conn = (new Database())->connect();
-        $result = $conn->prepare('SELECT * FROM users ORDER BY user_id');
+        $result = $conn->prepare('SELECT * FROM login ORDER BY id');
         $result->execute();
-        $dataUsers = $result->fetchAll(PDO::FETCH_ASSOC);
+        $user_data = $result->fetchAll(PDO::FETCH_ASSOC);
         $data = [
-            "dataUsers" => $dataUsers
+            "user_data" => $user_data
         ];
         self::view("mail-bulk", $data);
     }

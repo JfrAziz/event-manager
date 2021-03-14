@@ -20,6 +20,14 @@ Router::get("/", function () {
 
 
 // Admin authentication and authorization 
+Router::get("/register", function () {
+    Auth::register();
+});
+
+Router::post("/register", function (Req $req, Res $res) {
+    Auth::validateRegister($req, $res);
+});
+
 
 Router::get("/login", function () {
     Auth::login();

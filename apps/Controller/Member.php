@@ -39,17 +39,12 @@ class Member extends Controller
     public function profile()
     {
         $conn = (new Database())->connect();
-        $sql = $conn->prepare("SELECT * from login where LoginName =:currentUser");
-        $sql->bindValue(':currentUser', $_SESSION['uname']);
+        $sql = $conn->prepare("SELECT * from login where username =:username");
+        $sql->bindValue(':username', $_SESSION['username']);
         $sql->execute();
-        $userData = $sql->fetch();
-        $image_src = $userData['imgsrc'] == "" ? "/assets/img/avatars/image2.png" : "/assets/img/avatars/users/" . $userData['imgsrc'];
-
-        $data = [
-            "data"      => $userData,
-            "image_src" => $image_src
-        ];
-        self::view("profile", $data);
+        $user_data = $sql->fetch();
+        $user_data['imgsrc'] = $user_data['imgsrc'] == null ? "/assets/img/avatars/image2.png" : "/assets/img/avatars/users/" . $user_data['imgsrc'];
+        self::view("profile", $user_data);
     }
 
     public function update_photo(Request $request)
@@ -58,21 +53,21 @@ class Member extends Controller
         if (isset($data['photo_settings'])) {
 
             $data = $request->getFiles();
-            $name = $data['file']['name'];
+            $file_name = $data['file']['name'];
             $target_dir = "/assets/img/avatars/users/";
             $target_file = $target_dir . basename($_FILES["file"]["name"]);
-            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+            $image_file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
             $extensions_arr = ["jpg", "jpeg", "png", "gif"];
-            
-            if (in_array($imageFileType, $extensions_arr)) {
+
+            if (in_array($image_file_type, $extensions_arr)) {
 
                 $conn = (new Database())->connect();
-                $sql = $conn->prepare("UPDATE login SET imgsrc=:imgSRC where LoginName=:currentUser");
-                $sql->bindValue(':imgSRC', $name);
-                $sql->bindValue(':currentUser', $_SESSION['uname']);
+                $sql = $conn->prepare("UPDATE login SET imgsrc=:imgsrc where username=:username");
+                $sql->bindValue(':imgsrc', $file_name);
+                $sql->bindValue(':username', $_SESSION['username']);
                 $sql->execute();
 
-                move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $name);
+                move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $file_name);
             }
         }
         Router::to("/member/profile");
@@ -82,17 +77,10 @@ class Member extends Controller
     {
         $data = $request->getBody();
         if (isset($data['user_settings'])) {
-
-            $email     = $data['email'];
-            $firstname = $data['first_name'];
-            $lastname  = $data['last_name'];
-
             $conn = (new Database())->connect();
-            $query = $conn->prepare("UPDATE login SET lastname = :lastname, FirstName = :firstname, Email = :email where LoginName =:currentUser");
-            $query->bindValue(':lastname',    $lastname);
-            $query->bindValue(':firstname',   $firstname);
-            $query->bindValue(':email',       $email);
-            $query->bindValue(':currentUser', $_SESSION['uname']);
+            $query = $conn->prepare("UPDATE login SET email = :email where username =:username");
+            $query->bindValue(':email',      $data['email']);
+            $query->bindValue(':username', $_SESSION['username']);
             $query->execute();
         }
         Router::to("/member/profile");
@@ -102,15 +90,11 @@ class Member extends Controller
     {
         $data = $request->getBody();
         if (isset($data['contact_settings'])) {
-
-            $address = $data['address'];
-            $phno    = $data['phno'];
-
             $conn = (new Database())->connect();
-            $query = $conn->prepare("UPDATE login SET Address= :address, Phno= :phno where LoginName =:currentUser");
-            $query->bindValue(':address', $address);
-            $query->bindValue(':phno', $phno);
-            $query->bindValue(':currentUser', $_SESSION['uname']);
+            $query = $conn->prepare("UPDATE login SET address= :address, phone= :phone where username =:username");
+            $query->bindValue(':address', $data['address']);
+            $query->bindValue(':phone', $data['phone']);
+            $query->bindValue(':username', $_SESSION['username']);
             $query->execute();
         }
         Router::to("/member/profile");
@@ -120,13 +104,10 @@ class Member extends Controller
     {
         $data = $request->getBody();
         if (isset($data['signature_settings'])) {
-            
-            $signature = $data['signature'];
-
             $conn = (new Database())->connect();
-            $query = $conn->prepare("UPDATE login SET Signature= :signature where LoginName =:currentUser");
-            $query->bindValue(':signature', $signature);
-            $query->bindValue(':currentUser', $_SESSION['uname']);
+            $query = $conn->prepare("UPDATE login SET signature= :signature where username =:username");
+            $query->bindValue(':signature', $data['signature']);
+            $query->bindValue(':username', $_SESSION['username']);
             $query->execute();
         }
         Router::to("/member/profile");
