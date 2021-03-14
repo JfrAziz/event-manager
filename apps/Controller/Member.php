@@ -19,7 +19,7 @@ class Member extends Controller
     {
         $conn = (new Database())->connect();
 
-        $result = $conn->prepare('SELECT CONCAT("event_",LOWER(REPLACE((SELECT `event_name` FROM `events` order by `date` desc limit 1)," ","_"))) as code');
+        $result = $conn->prepare('SELECT CONCAT("event_",LOWER(REPLACE((SELECT `event_name` FROM `events` order by `event_date_start` desc limit 1)," ","_"))) as code');
         $result->execute();
         $row = $result->fetch();
         $eventTable = $row[0];

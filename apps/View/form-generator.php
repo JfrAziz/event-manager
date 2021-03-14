@@ -21,7 +21,7 @@
             <div class="card-body">
               <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                 <table class="table dataTable my-0" id="dataTable">
-                  <form action="" method="post" style="width: 60%;margin-left: 20%;margin-right: 20%" onSubmit="return validate_form();">
+                  <form action="" method="post" style="width: 60%;margin-left: 20%;margin-right: 20%">
                     <tr id="alert_name">
                       <th>Event name</th>
                       <td onclick="reverse_red('name')">
@@ -34,97 +34,41 @@
                         <textarea class="form-control" name="event_description" id="event_desc"></textarea>
                       </td>
                     </tr>
-                    <tr>
-                      <th>Choose Type</th>
-                      <td>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="event_type" value="individual" onclick="disable_dropdown()" checked>
-                          <label class="form-check-label">
-                            Individual
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="event_type" value="team" onclick="enable_dropdown()">
-                          <label class="form-check-label">
-                            Team
-                          </label>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>Choose Number of Members (If Team)</th>
-                      <td>
-                        <select class="form-control" name="number_participants" id="number_participants" disabled>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                        </select>
-                      </td>
-                    </tr>
 
-                    <tr id="alert_fields">
-                      <th>Choose the Fields Needed</th>
+                    <tr>
+                      <th>Event Date</th>
                       <td onclick="reverse_red('fields')">
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="regno" name="fields[]">
-                          <label class="form-check-label">
-                            Registration Number
+                          <label class="form-control-label">
+                            Start Date
                           </label>
+                          <input type="text" class="form-control" name="event_start" id="event_start" />
                         </div>
-
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" name="fields[]" value="dept">
-                          <label class="form-check-label">
-                            Department
+                          <label class="form-control-label">
+                            End Date
                           </label>
+                          <input type="text" class="form-control" name="event_end" id="event_end" />
                         </div>
-
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" name="fields[]" value="year">
-                          <label class="form-check-label">
-                            Year
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" name="fields[]" value="email">
-                          <label class="form-check-label">
-                            E-mail address
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" name="fields[]" value="phoneno">
-                          <label class="form-check-label">
-                            Contact Number
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" name="fields[]" value="college">
-                          <label class="form-check-label">
-                            College
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" name="fields[]" value="github">
-                          <label class="form-check-label">
-                            GitHub Profile link
-                          </label>
-                        </div>
-
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" name="fields[]" value="linkedin">
-                          <label class="form-check-label">
-                            LinkedIn Profile Link
-                          </label>
-                        </div>
-
                       </td>
+                    </tr>
 
+                    <tr>
+                      <th>Register Date</th>
+                      <td onclick="reverse_red('fields')">
+                        <div class="form-check">
+                          <label class="form-control-label">
+                            Start Date
+                          </label>
+                          <input type="text" class="form-control" name="register_start" id="register_start" />
+                        </div>
+                        <div class="form-check">
+                          <label class="form-control-label">
+                            End Date
+                          </label>
+                          <input type="text" class="form-control" name="register_end" id="register_end" />
+                        </div>
+                      </td>
                     </tr>
                     <tr>
 
@@ -137,7 +81,7 @@
 
                 </table>
                 <script type="text/javascript">
-                  function validate_form() {
+                  /*function validate_form() {
                     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
                     var checkedOne = Array.prototype.slice.call(checkboxes).some(x => x.checked);
 
@@ -148,12 +92,13 @@
                     if (!checkedOne) fields_row.style.backgroundColor = "rgba(255,0,0,0.1)";
 
                     return checkedOne;
-                  }
+                  }*/
 
                   function reverse_red(x) {
                     var row = document.getElementById("alert_" + x);
                     row.style.backgroundColor = "rgba(255,255,255,0)";
                   }
+                  /*
 
                   function disable_dropdown() {
                     document.getElementById("number_participants").disabled = true;
@@ -161,7 +106,7 @@
 
                   function enable_dropdown() {
                     document.getElementById("number_participants").disabled = false;
-                  }
+                  }*/
                 </script>
               </div>
             </div>
