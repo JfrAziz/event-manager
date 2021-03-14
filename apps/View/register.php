@@ -16,23 +16,28 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h4 class="text-dark mb-4">Login Admin</h4>
+                    <h4 class="text-dark mb-4">Register</h4>
                   </div>
-                  <form class="user" action="<?= base_url("login") ?>" method="POST">
+                  <form class="user" action="<?= base_url("register") ?>" method="POST">
                     <div class="form-group">
-                      <input class="form-control form-control-user" type="text"  placeholder="Username" name="username">
+                      <input class="form-control form-control-user" type="text" placeholder="Username" name="username">
+                    </div>
+                    <div class="form-group">
+                      <input class="form-control form-control-user" type="text" placeholder="Fullname" name="fullname">
+                    </div>
+                    <div class="form-group">
+                      <input class="form-control form-control-user" type="email" placeholder="Email" name="email">
                     </div>
                     <div class="form-group">
                       <input class="form-control form-control-user" type="password" placeholder="Password" name="password">
                     </div>
-                    <button class="btn btn-primary btn-block text-white btn-user" type="submit">Login
-                    </button>
+                    <div class="form-group">
+                      <input class="form-control form-control-user" type="password" placeholder="Password Confirmation" name="password_conf">
+                    </div>
+                    <button class="btn btn-primary btn-block text-white btn-user" type="submit">Register</button>
                   </form>
                   <div class="text-center">
-                    <a class="small" href="<?= base_url("forgot-password") ?>">Forgot Password?</a>
-                  </div>
-                  <div class="text-center">
-                    <a class="small" href="<?= base_url("register") ?>">Don't have account? Register</a>
+                    <a class="small" href="<?= base_url("login") ?>">Already Have account? Login</a>
                   </div>
                 </div>
               </div>

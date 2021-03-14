@@ -12,6 +12,42 @@ use PDO;
 class Auth extends Controller
 {
 
+    public static function register()
+    {
+        session_start();
+        if (!empty($_SESSION)) Router::to("/member/dashboard");
+        self::view("register");
+    }
+
+    public static function validateRegister(Request $request, Response $response)
+    {
+        $data = $request->getBody();
+        $email = $data['email'];
+        $username = $data['username'];
+        $fullname = $data['fullname'];
+        $password = $data['password'];
+        $password_conf = $data['password_conf'];
+
+        if ($username == null) Router::to("/register");
+        if ($fullname == null) Router::to("/register");
+        if ($email == null) Router::to("/register");
+        if ($password == null) Router::to("/register");
+        if ($password_conf == null || $password_conf != $password) Router::to("/register");
+
+        try {
+            $conn = (new Database())->connect();
+            $sql = $conn->prepare('INSERT INTO login (username, password_hash, fullname, email) VALUES (:username, SHA(:password), :fullname, :email);');
+            $sql->bindValue(":email", $email);
+            $sql->bindValue(":username", $username);
+            $sql->bindValue(":password", $password);
+            $sql->bindValue(":fullname", $fullname);
+            $sql->execute();
+            Router::to("/login");
+        } catch (\Exception $e) {
+            Router::to("/register");
+        }
+    }
+
     /**
      * login
      * 

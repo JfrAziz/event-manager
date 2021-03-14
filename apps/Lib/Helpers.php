@@ -17,3 +17,9 @@ function base_url(string $uri = ""): string
     $uri = trim($uri, "/");
     return trim($url."/".$uri, "/");
 }
+
+function is_admin(): bool
+{
+    if(session_status() == PHP_SESSION_NONE) session_start();
+    return $_SESSION['is_admin'] ? true : false;
+}
