@@ -69,26 +69,17 @@
                         </tr>
                       </thead>
                       <tbody>
-
-                        <?php
-                        $data = $data['dataUsers'];
-                        $index = 0;
-                        foreach ($data as $row) {
-                          $index++;
-                          echo '
-                            <tr>
-                              <td>' . $row["name"] . '</td>
-                              <td>' . $row["email"] . '</td>
-                              <td>
-                                    <div style="text-align: center;">
-                                        <input style="cursor: pointer;" type="checkbox" name="single_select" class="single_select" data-email="' . $row["email"] . '" data-name="' . $row["name"] . '" />
-                                    </div>
-
-                              </td>
-                            </tr>
-                            ';
-                        }
-                        ?>
+                        <?php foreach ($user_data as $row) : ?>
+                          <tr>
+                            <td><?= $row["fullname"] ?></td>
+                            <td><?= $row["email"] ?></td>
+                            <td>
+                              <div class="text-center">
+                                <input style="cursor: pointer;" type="checkbox" name="single_select" class="single_select" data-email='<?= $row["email"] ?>' data-name='<?= $row['fullname'] ?>' />
+                              </div>
+                            </td>
+                          </tr>
+                        <?php endforeach; ?>
                       </tbody>
                     </table>
                   </div>

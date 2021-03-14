@@ -7,7 +7,7 @@
       <li class="nav-item dropdown no-arrow" role="presentation">
         <div class="nav-item dropdown no-arrow">
           <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">
-            <span class="d-none d-lg-inline mr-2 text-gray-600 small"><?= $_SESSION['FullName'] ?></span>
+            <span class="d-none d-lg-inline mr-2 text-gray-600 small"><?= $_SESSION['fullname'] ?></span>
           </a>
           <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
             <a class="dropdown-item" role="presentation" href="<?= base_url("member/profile") ?>">
