@@ -31,7 +31,7 @@
                   </div>
                 </div>
                 <div id="error-msg" class="alert alert-danger alert-dismissible d-none" role="alert" style="padding: 0 10px 0 10px; margin: -12px 8px -6px 8px;">
-                  <div style="font-size: 12px;">Pesan Harus Diisi.</div>
+                  <div style="font-size: 14px;"><strong>Pesan</strong> Harus Diisi.</div>
                   <button type="button" onclick="$('#error-msg').addClass('d-none')" class="close" aria-label="Close" style="padding: 0 8px 0 8px; margin-top: -5px; outline: none;">
                     <span aria-hidden="true" style="font-size: 20px;">&times;</span>
                   </button>
@@ -47,7 +47,7 @@
                 </div>
 
                 <div id="error-file" class="alert alert-danger alert-dismissible d-none" role="alert" style="padding: 0 25px 0 10px; margin: -19px 8px 1px 8px;">
-                  <div style="font-size: 12px; overflow-wrap: break-word; text-align: justify;">Error Upload.</div>
+                  <div style="font-size: 14px; overflow-wrap: break-word; text-align: justify;">Error Upload.</div>
                   <button type="button" onclick="$('#error-file').addClass('d-none')" class="close" aria-label="Close" style="padding: 0 8px 0 8px; margin-top: -5px; outline: none;">
                     <span aria-hidden="true" style="font-size: 20px;">&times;</span>
                   </button>
@@ -68,7 +68,7 @@
                           </th>
                         </tr>
                       </thead>
-                      <tbody id="tabels">
+                      <tbody>
 
                         <?php
                         $data = $data['dataUsers'];
@@ -95,7 +95,7 @@
                 </div>
 
                 <div id="msg-send" class="alert alert-dismissible d-none" role="alert" style="padding: 0 10px 0 10px; margin: -17px 10px 3px 10px;">
-                  <div style="font-size: 12px; overflow-wrap: break-word;">Pesan Pengiriman</div>
+                  <div style="font-size: 14px; overflow-wrap: break-word;">Pesan Pengiriman</div>
                   <button type="button" onclick="$('#msg-send').addClass('d-none')" class="close" aria-label="Close" style="padding: 0 8px 0 8px; margin-top: -5px; outline: none;">
                     <span aria-hidden="true" style="font-size: 20px;">&times;</span>
                   </button>
@@ -107,9 +107,9 @@
                       <button type="button" id="btn-send" class="btn btn-primary">
                         <i class="fa fa-send" style="margin-right: 10px;"></i>Kirim Pesan
                       </button>
-                      <button class="btn btn-primary btn-loading d-none" type="button" disabled>
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        Mengirim...
+                      <button style="position: relative;" class="btn btn-primary btn-loading d-none" type="button" disabled>
+                        <span style="position: absolute; left: 10px; top: 10px;" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        <div style="padding-left: 22px;">Mengirim...</div>
                       </button>
                     </div>
                   </div>

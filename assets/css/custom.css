@@ -1,4 +1,8 @@
 /* custom style bulk mailer */
+html {
+    scroll-behavior: smooth;
+}
+
 .btn-xs {
     font-size: 11px;
     padding: 2px 6px 2px 6px;
@@ -35,6 +39,14 @@
     transform: translate(-5px, 3px);
     margin-bottom: 3px;
     padding-left: 25px;
+}
+
+#user_table_filter input:focus {
+    border: 1px solid rgb(145, 169, 225);
+}
+
+#user_table_filter input:focus+.fa-search {
+    color: rgb(145, 169, 225);
 }
 
 #user_table_filter label {

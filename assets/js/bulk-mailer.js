@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var oTable = $('#user_table').DataTable({
+    $('#user_table').DataTable({
         "dom": '<"top"<"pull-left"f><"pull-right"l>>rt<"bottom"<"pull-left"i><"pull-right"p>>',
         stateSave: true,
         scrollY: '25vh',
@@ -30,30 +30,23 @@ $(document).ready(function () {
        <i class="fa fa-search" style="position:absolute; top:13px;left:5px"></i>
     `)
 
-    var allPages = oTable.cells().nodes()
-
     $('#allcheck').click(function () {
-        if ($(this).hasClass('allChecked')) {
-            $(allPages).find('input[type="checkbox"]').prop('checked', false);
-        } else {
-            $(allPages).find('input[type="checkbox"]').prop('checked', true);
-        }
-        $(this).toggleClass('allChecked');
+        $('.single_select').prop('checked', $(this).prop('checked'))
     })
 
     $('#pop').popover();
 
     function ajax(file, email_data, id) {
-        var fd = new FormData(document.getElementById('form'));
+        var fd = new FormData(document.getElementById('form'))
 
         if (file.length > 0) {
-            $.each(file, function (val) {
+            $.each(file, function (i, val) {
                 fd.append('files[]', val)
             });
         }
-        console.log(file);
-        fd.append('email_data', JSON.stringify(email_data));
-        console.log(fd);
+
+        fd.append('email_data', JSON.stringify(email_data))
+
         $.ajax({
             url: "sendEmail",
             method: "POST",
@@ -66,8 +59,8 @@ $(document).ready(function () {
                 $('.btn-loading').toggleClass('d-none').css('cursor', 'not-allowed')
             },
             success: function (data) {
-                if (data == 'ok' || data.includes(' 25MB.') || data.includes('Kode error upload file')) {
-                    if (data.includes(' 25MB.')) {
+                if (data == 'ok' || data.includes('maksimal upload di form html.') || data.includes('Kode error upload file')) {
+                    if (data.includes('maksimal upload di form html.')) {
                         $('#error-file').removeClass('d-none')
                         $('#error-file').removeClass('alert-danger').addClass('alert-warning')
                         $('#error-file').children().first().html(data)
@@ -91,7 +84,23 @@ $(document).ready(function () {
         })
     }
 
-    $('#btn-send').click(function (e) {
+    function confirm(msg) {
+        return $('body').prepend(`
+        <div id='konfir' style="position: fixed; top: 0; bottom: 0; right: 0; left: 0; z-index: 100; display: flex; justify-content: center; align-items: center; background-color:rgba(0, 0, 0,0.3);">
+          <div style="transition: all 700ms; background-color: rgba(156, 163, 175, 0); margin-left: 20px; margin-right: 20px; display: none; opacity: 0;">
+            <div style="background-color: white; border-radius: 0.6rem; display: flex; flex-direction: column; justify-content: center; justify-items: center; padding: 1rem 1rem 0.9rem 1rem; border-top: 7px solid rgb(55,93,255); box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 4px 0px inset;">
+              <p style="margin-bottom: 1.3rem; text-align: justify;font-weight: 600;">${msg}</p>
+              <div id="btn-konfir" style="color: white; display: flex; justify-content: flex-end;">
+                <div style="font-weight: 700; border-radius: 1rem; width:5rem; margin-right: 0.5rem; font-size: 0.875rem; line-height: 1.25rem; display: flex; justify-content: center; align-items: center; cursor: pointer; padding-top: 0.25rem;padding-bottom: 0.25rem; transition: all 300ms;" class="buttonBatal">BATAL</div>
+                <div class="buttonOk" style="border-radius: 1rem; width: 5rem; font-size: 0.875rem; line-height: 1.25rem; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: all 300ms;" class="hover:bg-red-800 bg-red-600">OK</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        `)
+    }
+
+    $('#btn-send').click(function () {
         var msg_empty = true
         $('#error-file').addClass('d-none').removeClass('alert-warning').addClass('alert-danger')
         $('#msg-send').addClass('d-none')
@@ -102,9 +111,9 @@ $(document).ready(function () {
             msg_empty = false
         }
 
-        var id = $(this).attr("id")
-        var email_data = []
-        var cek_select = true
+        var id = $(this).attr("id"),
+            email_data = [],
+            cek_select = true
         $('.single_select').each(function () {
             if ($(this).prop("checked")) {
                 email_data.push({
@@ -122,42 +131,42 @@ $(document).ready(function () {
 
         if (!cek_select || msg_empty) return
 
-        var total_size = 0
-        var file = $('#file')[0].files;
-        if (file.length > 1) {
+        var konfir = true,
+            total_size = 0,
+            file = $('#file')[0].files
+        if (file.length >= 1) {
+
+            var File = [],
+                i = 0,
+                j = 0,
+                size_right_file = 0,
+                File_unsend = []
             konfir = false
             Array.from(file).forEach(el => {
-                total_size += el['size'];
-            });
-        } else if (file.length == 1) {
-            if (file[0]['size'] > 1048576) {
-                $('#error-file').removeClass('d-none')
-                $('#error-file').children().first().text('Batas mengirim file 25MB.')
-                $('#msg-send').removeClass('d-none')
-                $('#msg-send').removeClass('btn-success').addClass('btn-danger').css('text-align', 'center')
-                $('#msg-send').children().first().text('Gagal mengirim email')
-                return
-            } else {
-                konfir = true;
+                if ((size_right_file + el['size']) <= 1048576) {
+                    File[i] = el
+                    i++
+                    size_right_file += el['size']
+                } else {
+                    File_unsend[j] = el
+                    j++
+                }
+                total_size += el['size']
+            })
+
+            if (File.length == file.length == 1) {
+                konfir = true
             }
-        } else {
-            konfir = true;
         }
 
         if (total_size > 1048576) {
-            $('body').prepend(`
-        <div id='konfir' style="position: fixed; top: 0; bottom: 0; right: 0; left: 0; z-index: 100; display: flex; justify-content: center; align-items: center; background-color:rgba(0, 0, 0,0.3);">
-          <div style="transition: all 700ms; background-color: rgba(156, 163, 175, 0); margin-left: 20px; margin-right: 20px; display: none; opacity: 0;">
-            <div style="background-color: white; border-radius: 0.6rem; display: flex; flex-direction: column; justify-content: center; justify-items: center; padding: 1rem 1rem 0.9rem 1rem; border-top: 7px solid rgb(55,93,255); box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 4px 0px inset;">
-              <p style="margin-bottom: 1.3rem; text-align: justify;font-weight: 600;">Beberapa file tidak akan terkirim. Batas kirim file 25MB. Yakin tetap mengirim email?</p>
-              <div id="btn-konfir" style="color: white; display: flex; justify-content: flex-end;">
-                <div style="font-weight: 700; border-radius: 1rem; width:5rem; margin-right: 0.5rem; font-size: 0.875rem; line-height: 1.25rem; display: flex; justify-content: center; align-items: center; cursor: pointer; padding-top: 0.25rem;padding-bottom: 0.25rem; transition: all 300ms;" class="buttonBatal">BATAL</div>
-                <div class="buttonOk" style="border-radius: 1rem; width: 5rem; font-size: 0.875rem; line-height: 1.25rem; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: all 300ms;" class="hover:bg-red-800 bg-red-600">OK</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        `)
+            if (file.length == 1) {
+                confirm('File tidak akan terkirim. Batas kirim file 25MB. Yakin tetap mengirim email?')
+            } else if (File.length == 0 && file.length != 1) {
+                confirm('Semua file tidak akan terkirim. Batas kirim file 25MB. Yakin tetap mengirim email?')
+            } else {
+                confirm('Beberapa file tidak akan terkirim. Batas kirim file 25MB. Yakin tetap mengirim email?')
+            }
             $('#konfir').children().first().css('display', 'block')
             setTimeout(function () {
                 $('#konfir').children().first().css('opacity', '1')
@@ -182,7 +191,14 @@ $(document).ready(function () {
                     });
                     setTimeout(function () {
                         $('#konfir').remove()
-                        ajax(file, email_data, id)
+                        ajax(File, email_data, id)
+                        let data = ``
+                        $.each(File_unsend, function (i, el) {
+                            data += `File <strong>${el['name']}</strong> tidak terkirim karena batas maksimal mengirim file 25MB. <br>`
+                        })
+                        $('#error-file').removeClass('d-none')
+                        $('#error-file').removeClass('alert-danger').addClass('alert-warning')
+                        $('#error-file').children().first().html(data)
                     }, 400);
                 }
             })
@@ -193,18 +209,23 @@ $(document).ready(function () {
         if (konfir) {
             ajax(file, email_data, id)
         }
-    });
+    })
 
     $('#file').change(function () {
         var file = $('#file')[0].files
         var arrFile = [],
             i = 0;
-        Array.from(file).forEach(el => {
-            (i == 0) ? arrFile[i] = el['name']: arrFile[i] = ' ' + el['name']
-            i++
+        Array.from(file).forEach((el, i) => {
+            if (i == 0) {
+                arrFile[i] = `<strong>${el['name']}</strong>`
+            } else if (i > 0 && i % 2 == 1) {
+                arrFile[i] = ` ${el['name']}`
+            } else {
+                arrFile[i] = `<strong>  ${el['name']}</strong>`
+            }
         })
         if (arrFile != '') {
-            $(this).prev('label').text(arrFile + ' ')
+            $(this).prev('label').html(`${arrFile}`)
         }
     })
 
