@@ -22,19 +22,19 @@
                             <div class="table-responsive table mt-2" id="dataTable" role="grid"
                                 aria-describedby="dataTable_info">
                                 <table class="table dataTable my-0" id="dataTable">
-                                    <form action="form/addevent" method="post" style="width: 60%;margin-left: 20%;margin-right: 20%">
+                                    <form action="form/addevent" method="post" style="width: 60%;margin-left: 20%;margin-right: 20%" onsubmit="return validate_form()">
                                         <tr id="alert_name">
                                             <th>Event Name</th>
                                             <td onclick="reverse_red('name')">
                                                 <input type="text" class="form-control" name="event_name"
-                                                    id="event_name" />
+                                                    id="event_name" required/>
                                             </td>
                                         </tr>
                                         <tr id="alert_name">
                                             <th>Event Description</th>
                                             <td>
                                                 <textarea class="form-control" name="event_desc"
-                                                    id="event_desc"></textarea>
+                                                    id="event_desc" required></textarea>
                                             </td>
                                         </tr>
                                         <tr id="alert_name">
@@ -56,11 +56,11 @@
                                                     <div class="form-inline">
                                                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                                             <input type="date" class="form-control"
-                                                                name="event_start_date" id="event_start_date">
+                                                                name="event_start_date" id="event_start_date" required>
                                                         </div>
                                                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                                             <input type="time" class="form-control"
-                                                                name="event_start_time" id="event_start_time">
+                                                                name="event_start_time" id="event_start_time" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -71,11 +71,11 @@
                                                     <div class="form-inline">
                                                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                                             <input type="date" class="form-control"
-                                                                name="event_end_date" id="event_end_date">
+                                                                name="event_end_date" id="event_end_date" required>
                                                         </div>
                                                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                                             <input type="time" class="form-control"
-                                                                name="event_end_time" id="event_end_time">
+                                                                name="event_end_time" id="event_end_time" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -94,11 +94,11 @@
                                                     <div class="form-inline">
                                                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                                             <input type="date" class="form-control"
-                                                                name="reg_start_date" id="reg_start_date">
+                                                                name="reg_start_date" id="reg_start_date" required>
                                                         </div>
                                                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                                             <input type="time" class="form-control"
-                                                                name="reg_start_time" id="reg_start_time">
+                                                                name="reg_start_time" id="reg_start_time" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -109,11 +109,11 @@
                                                     <div class="form-inline">
                                                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                                             <input type="date" class="form-control"
-                                                                name="reg_end_date" id="reg_end_date">
+                                                                name="reg_end_date" id="reg_end_date" required>
                                                         </div>
                                                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                                             <input type="time" class="form-control"
-                                                                name="reg_end_time" id="reg_end_time">
+                                                                name="reg_end_time" id="reg_end_time" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -132,6 +132,27 @@
 
                                 </table>
                                 <script type="text/javascript">
+                                function validate_form() {
+                                    var event_start = Date.parse(document.getElementById("event_start_date").value + ' ' + document.getElementById("event_start_time").value);
+                                    var event_end = Date.parse(document.getElementById("event_end_date").value + ' ' + document.getElementById("event_end_time").value);
+                                    var reg_start = Date.parse(document.getElementById("reg_start_date").value + ' ' + document.getElementById("reg_start_time").value);
+                                    var reg_end = Date.parse(document.getElementById("reg_end_date").value + ' ' + document.getElementById("reg_end_time").value);
+                                    
+                                    eventDateDiff = event_end - event_start;
+                                    regDateDiff = reg_end - reg_start;
+                                    regPeriod = event_start - reg_end;
+
+                                    if (eventDateDiff < 0) {
+                                        message = "Rentang Waktu Pelaksanaan Event Tidak Valid";
+                                        return false;
+                                    } else if (regDateDiff < 0) {
+                                        message = "Rentang Waktu Registrasi Tidak Valid";
+                                        return false;
+                                    } else if (regPeriod < 0) {
+                                        message = "Periode Registrasi Harus Berakhir Sebelum Event Dimulai"
+                                        return false;
+                                    }
+                                }
                                 /*function validate_form() {
                     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
                     var checkedOne = Array.prototype.slice.call(checkboxes).some(x => x.checked);
