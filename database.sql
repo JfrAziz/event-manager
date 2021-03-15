@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Mar 2021 pada 09.46
+-- Waktu pembuatan: 15 Mar 2021 pada 11.51
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.1
 
@@ -45,7 +45,7 @@ CREATE TABLE `certificates` (
 CREATE TABLE `events` (
   `id` int(255) NOT NULL,
   `event_name` varchar(255) NOT NULL,
-  `event_desc` varchar(255) NOT NULL,
+  `event_desc` text NOT NULL,
   `event_participant` bigint(20) NOT NULL,
   `event_date_start` datetime NOT NULL,
   `event_date_end` datetime NOT NULL,
@@ -53,6 +53,13 @@ CREATE TABLE `events` (
   `register_date_end` datetime NOT NULL,
   `uid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `events`
+--
+
+INSERT INTO `events` (`id`, `event_name`, `event_desc`, `event_participant`, `event_date_start`, `event_date_end`, `register_date_start`, `register_date_end`, `uid`) VALUES
+(3, 'Event Baru', 'Ini event Garena yang terbaru&#13;&#10;* Jangan  makan&#13;&#10;* Jangan minum&#13;&#10;* Jangan tidur&#13;&#10;itu saja dari kami wassalam', 90, '2021-03-20 07:00:00', '2021-03-20 12:00:00', '2021-03-15 00:00:00', '2021-03-19 23:59:00', 3);
 
 -- --------------------------------------------------------
 
@@ -200,7 +207,7 @@ ALTER TABLE `certificates`
 -- AUTO_INCREMENT untuk tabel `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `login`

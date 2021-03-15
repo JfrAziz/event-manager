@@ -22,7 +22,7 @@
                             <div class="table-responsive table mt-2" id="dataTable" role="grid"
                                 aria-describedby="dataTable_info">
                                 <table class="table dataTable my-0" id="dataTable">
-                                    <form action="" method="post" style="width: 60%;margin-left: 20%;margin-right: 20%">
+                                    <form action="form/addevent" method="post" style="width: 60%;margin-left: 20%;margin-right: 20%">
                                         <tr id="alert_name">
                                             <th>Event Name</th>
                                             <td onclick="reverse_red('name')">
@@ -40,8 +40,8 @@
                                         <tr id="alert_name">
                                             <th>Limit Participant</th>
                                             <td>
-                                                <input type="number" class="form-control" name="event_desc"
-                                                    id="event_desc" min="0"/>
+                                                <input type="number" class="form-control" name="event_participant"
+                                                    id="event_participant" min="0"/>
                                             </td>
                                         </tr>
 
@@ -71,7 +71,7 @@
                                                     <div class="form-inline">
                                                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                                             <input type="date" class="form-control"
-                                                                name="event_end_date" id="event_start_date">
+                                                                name="event_end_date" id="event_end_date">
                                                         </div>
                                                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                                             <input type="time" class="form-control"
@@ -109,11 +109,11 @@
                                                     <div class="form-inline">
                                                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                                             <input type="date" class="form-control"
-                                                                name="event_end_date" id="event_start_date">
+                                                                name="reg_end_date" id="reg_end_date">
                                                         </div>
                                                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                                             <input type="time" class="form-control"
-                                                                name="event_end_time" id="event_end_time">
+                                                                name="reg_end_time" id="reg_end_time">
                                                         </div>
                                                     </div>
                                                 </div>

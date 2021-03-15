@@ -90,7 +90,11 @@ Router::post("/member/profile/signature", function (Req $req, Res $res) {
 // Form
 
 Router::get("/member/form", function () {
-    (new Form())->index();
+    Form::index();
+});
+
+Router::post("/member/form/addevent", function (Req $req, Res $res) {
+    Form::addEvent($req, $res);
 });
 
 Router::get("/member/form/reg", function (Req $req, Res $res) {
