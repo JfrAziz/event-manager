@@ -17,11 +17,11 @@
 
           <div class="row">
             <div class="col-md-6 col-xl-4 mb-4">
-              <div class="card shadow border-left-primary py-2">
+              <div class="card shadow py-2">
                 <div class="card-body">
                   <div class="row align-items-center no-gutters">
                     <div class="col mr-2">
-                      <div class="text-uppercase text-primary font-weight-bold text-xs mb-1">
+                      <div class="text-uppercase text-custom-primary font-weight-bold text-xs mb-1">
                         <span>Registrations for <?= ucwords(str_replace("event ", "", (str_replace("_", " ", $event_table)))); ?> (Latest)</span>
                       </div>
                       <div class="text-dark font-weight-bold h5 mb-0">
@@ -36,7 +36,7 @@
               </div>
             </div>
             <div class="col-md-6 col-xl-4 mb-4">
-              <div class="card shadow border-left-success py-2">
+              <div class="card shadow py-2">
                 <div class="card-body">
                   <div class="row align-items-center no-gutters">
                     <div class="col mr-2">
@@ -55,11 +55,11 @@
               </div>
             </div>
             <div class="col-md-6 col-xl-4 mb-4">
-              <div class="card shadow border-left-primary py-2">
+              <div class="card shadow py-2">
                 <div class="card-body">
                   <div class="row align-items-center no-gutters">
                     <div class="col mr-2">
-                      <div class="text-uppercase text-primary font-weight-bold text-xs mb-1">
+                      <div class="text-uppercase text-custom-primary font-weight-bold text-xs mb-1">
                         <span>Events conducted so far</span>
                       </div>
                       <div class="text-dark font-weight-bold h5 mb-0">

@@ -1,11 +1,8 @@
-<nav id="navbar" class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+<nav id="navbar" class="navbar align-items-start sidebar sidebar-dark navigation p-0">
 	<div class="container-fluid d-flex flex-column p-0">
 
-		<a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-			<div class="sidebar-brand-icon">
-				<img class="logo" src="https://dummyimage.com/300x100">
-			</div>
-			<div class="sidebar-brand-text mx-3"></div>
+		<a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0 px-0" href="#">
+			<div class="sidebar-brand-text">Event Generator</div>
 		</a>
 
 		<hr class="sidebar-divider my-0">
@@ -44,9 +41,6 @@
 					</a>
 					<a class="nav-link" href="<?= base_url("/member/mail") ?>">
 						<i class="fas fa-mail-bulk"></i><span class="ml-md-1">Bulk Mailer</span>
-					</a>
-					<a class="nav-link" href="<?= base_url("/member/mail/list") ?>">
-						<i class="fas fa-list"></i><span class="ml-md-1">Update Mailing List</span>
 					</a>
 				</li>
 

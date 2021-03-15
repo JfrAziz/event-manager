@@ -43,7 +43,7 @@ class Mail extends Controller
                 $mail->Port = 465;
                 $mail->SMTPAuth = true;
                 $mail->Username = 'alamatEmail';
-                $mail->Password = 'passwordEmail';
+                $mail->Password = 'PassswordEmail';
                 $mail->SMTPSecure = 'ssl';
                 $mail->From = 'alamatEmail';
                 $mail->FromName = 'Event Manajemen STIS';
@@ -71,19 +71,16 @@ class Mail extends Controller
                     for ($i = 0; $i < count($file_name); $i++) {
 
                         if ($file_error[$i] == 0) {
-                            if (($total_size + $file_size[$i]) < 1000000) {
+                            if (($total_size + $file_size[$i]) < 1048576) {
                                 $total_size += $file_size[$i];
                                 $mail->AddAttachment($file_tmp[$i], $file_name[$i]);
                                 $total_file++;
-                            } else {
-                                $output .= 'File "' . $file_name[$i] . '" tidak terkirim karena batas maksimal mengirim file 25MB.' . '<br>';
                             }
-                        } elseif ($file_error == 1 || $file_error == 2) {
-
-                            $output .= 'Ukuran file "' . $file_name[$i] . '" melebihi batas maksimal 25MB.' . '<br>';
+                        } elseif ($file_error == 2) {
+                            $output .= 'Ukuran file <strong>' . $file_name[$i] . '</strong> melebihi batas maksimal upload di form html.' . '<br>';
                         } else {
 
-                            $output .= 'Kode error upload file "' . $file_name[$i] . '" : ' . $file_error . '<br>';
+                            $output .= 'Kode error upload file <strong>' . $file_name[$i] . '</strong> : ' . $file_error . '<br>';
                         }
                     }
 
