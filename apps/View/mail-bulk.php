@@ -12,7 +12,7 @@
         <div class="container-fluid">
           <div class="card shadow">
             <div class="card-header py-3">
-              <p class="text-primary m-0 font-weight-bold">Bulk Mailer</p>
+              <p class="text-custom-primary m-0 font-weight-bold">Bulk Mailer</p>
             </div>
             <div class="card-body m-3">
               <form method="POST" action="send.php" id="form" enctype="multipart/form-data">
@@ -30,13 +30,13 @@
                     </div>
                   </div>
                 </div>
-                <div id="error-msg" class="alert alert-danger alert-dismissible d-none" role="alert" style="padding: 0 10px 0 10px; margin: -12px 8px -6px 8px;">
+                <div id="error-msg" class="alert alert-danger alert-dismissible my-3 d-none" role="alert">
                   <div style="font-size: 14px;"><strong>Pesan</strong> Harus Diisi.</div>
                   <button type="button" onclick="$('#error-msg').addClass('d-none')" class="close" aria-label="Close" style="padding: 0 8px 0 8px; margin-top: -5px; outline: none;">
                     <span aria-hidden="true" style="font-size: 20px;">&times;</span>
                   </button>
                 </div>
-                <div class="form-row" id="file-body" style="margin-left: 3px;margin-top: 10px;margin-right: 3px; margin-bottom: 22px;">
+                <div class="form-row" id="file-body m-3">
                   <div class="col">
                     <div class="custom-file">
                       <label class="custom-file-label" for="file-upload" style="white-space: nowrap;overflow: hidden;text-overflow: clip;">Pilih file</label>
@@ -44,13 +44,13 @@
                     </div>
                   </div>
                 </div>
-                <div id="error-file" class="alert alert-danger alert-dismissible d-none" role="alert" style="padding: 0 25px 0 10px; margin: -19px 8px 1px 8px;">
+                <div id="error-file" class="alert alert-danger alert-dismissible my-3 d-none" role="alert" >
                   <div style="font-size: 14px; overflow-wrap: break-word; text-align: justify;">Error Upload.</div>
                   <button type="button" onclick="$('#error-file').addClass('d-none')" class="close" aria-label="Close" style="padding: 0 8px 0 8px; margin-top: -5px; outline: none;">
                     <span aria-hidden="true" style="font-size: 20px;">&times;</span>
                   </button>
                 </div>
-                <div class="table-responsive table">
+                <div class="table-responsive table my-3">
                   <div class="col px-1">
                     <table id="user_table" class="table display nowrap" style="width: 100%;">
                       <thead>
@@ -90,10 +90,10 @@
                 <div class="form-row" id="submit-btn">
                   <div class="col center">
                     <div class="form-group mb-3">
-                      <button type="button" id="btn-send" class="btn btn-primary">
+                      <button type="button" id="btn-send" class="btn btn-custom-primary text-white">
                         <i class="fa fa-send mr-3"></i>Kirim Pesan
                       </button>
-                      <button style="position: relative;" class="btn btn-primary btn-loading d-none" type="button" disabled>
+                      <button style="position: relative;" class="btn btn-custom-primary text-white btn-loading d-none" type="button" disabled>
                         <span style="position: absolute; left: 10px; top: 10px;" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         <div style="padding-left: 22px;">Mengirim...</div>
                       </button>

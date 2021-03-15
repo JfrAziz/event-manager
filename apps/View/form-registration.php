@@ -15,9 +15,6 @@
         <div class="container-fluid">
           <div class="d-sm-flex justify-content-between align-items-center mb-4">
             <h3 class="text-dark mb-0">View Responses</h3>
-            <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="">
-              <i class=" fas fa-download fa-sm text-white-50"></i>Download CSV
-            </a>
           </div>
           <div class="row">
             <div class="col-md-9 mb-4">
@@ -53,7 +50,7 @@
           </div>
           <div class="card shadow">
             <div class="card-header py-3">
-              <p class="text-primary m-0 font-weight-bold"><?= ucwords(str_replace("event ", "", (str_replace("_", " ", $event)))); ?></p>
+              <p class="text-custom-primary m-0 font-weight-bold"><?= ucwords(str_replace("event ", "", (str_replace("_", " ", $event)))); ?></p>
             </div>
             <div class="card-body">
               <div class="row">

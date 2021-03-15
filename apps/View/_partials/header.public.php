@@ -10,12 +10,12 @@
         <div class="input-group">
           <input class="bg-light form-control border-1" type="text" placeholder="Search event">
           <div class="input-group-append">
-            <button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button>
+            <button class="btn btn-custom-primary text-white py-0" type="button"><i class="fas fa-search"></i></button>
           </div>
         </div>
       </form>
       <li class="nav-item d-flex align-items-center" role="presentation">
-        <a href="<?= base_url("login") ?>" class="btn btn-primary"><?= $_SESSION ? "Dashboard" : "Login" ?></a>
+        <a href="<?= base_url("login") ?>" class="btn btn-custom-primary text-white"><?= $_SESSION ? "DASHBOARD" : "LOGIN" ?></a>
       </li>
     </ul>
   </div>

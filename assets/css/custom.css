@@ -8,6 +8,19 @@ html {
     padding: 2px 6px 2px 6px;
 }
 
+.navigation {
+    background-color: #973884;
+}
+
+.btn-custom-primary {
+    background-color: #bf4aa8;
+    border-color: #bf4aa8;
+}
+
+.text-custom-primary {
+    color: #bf4aa8;
+}
+
 #user_table_filter input {
     border-radius: 7px;
 }

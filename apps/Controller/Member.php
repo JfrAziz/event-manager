@@ -19,19 +19,19 @@ class Member extends Controller
     {
         $conn = (new Database())->connect();
 
-        $result = $conn->prepare('SELECT CONCAT("event_",LOWER(REPLACE((SELECT `event_name` FROM `events` order by `event_date_start` desc limit 1)," ","_"))) as code');
-        $result->execute();
-        $row = $result->fetch();
-        $eventTable = $row[0];
+        // $result = $conn->prepare('SELECT CONCAT("event_",LOWER(REPLACE((SELECT `event_name` FROM `events` order by `event_date_start` desc limit 1)," ","_"))) as code');
+        // $result->execute();
+        // $row = $result->fetch();
+        // $eventTable = $row[0];
 
-        $result = $conn->prepare('SELECT COUNT(*) as code FROM events;');
-        $result->execute();
-        $row = $result->fetch();
-        $eventsCount = $row[0];
+        // $result = $conn->prepare('SELECT COUNT(*) as code FROM events;');
+        // $result->execute();
+        // $row = $result->fetch();
+        // $eventsCount = $row[0];
 
         $data = [
-            "event_table" => $eventTable,
-            "events_count" => $eventsCount
+            // "event_table" => $eventTable,
+            // "events_count" => $eventsCount
         ];
         self::view("dashboard", $data);
     }
