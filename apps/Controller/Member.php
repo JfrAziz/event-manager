@@ -55,10 +55,8 @@ class Member extends Controller
     {
         $data = $request->getBody();
         if (isset($data['photo_settings'])) {
-
-            $data = $request->getFiles();
-            $file_name = $data['file']['name'];
-            $target_dir = "/assets/img/avatars/users/";
+            $file_name = $_FILES['file']['name'];
+            $target_dir =getcwd()."/assets/img/avatars/users/";
             $target_file = $target_dir . basename($_FILES["file"]["name"]);
             $image_file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
             $extensions_arr = ["jpg", "jpeg", "png", "gif"];
@@ -66,13 +64,15 @@ class Member extends Controller
             if (in_array($image_file_type, $extensions_arr)) {
 
                 $conn = (new Database())->connect();
-                $sql = $conn->prepare("UPDATE login SET imgsrc=:imgsrc where username=:username");
+                $sql = $conn->prepare("UPDATE login SET imgsrc=:imgsrc where id=:id");
                 $sql->bindValue(':imgsrc', $file_name);
-                $sql->bindValue(':username', $_SESSION['username']);
+                $sql->bindValue(':id', $_SESSION['id']);
                 $sql->execute();
 
                 move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $file_name);
-            }
+            
+
+             }
         }
         Router::to("/member/profile");
     }

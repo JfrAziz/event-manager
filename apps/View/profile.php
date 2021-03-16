@@ -103,7 +103,7 @@
                           <div class="col">
                             <div class="form-group">
                               <label for="country"><strong>Phone Number</strong></label>
-                              <input class="form-control" type="text" placeholder="+91-1234567890" value="<?= $phone ?>" name="phno">
+                              <input class="form-control" type="text" placeholder="+91-1234567890" value="<?= $phone ?>" name="phone">
                             </div>
                           </div>
                         </div>
