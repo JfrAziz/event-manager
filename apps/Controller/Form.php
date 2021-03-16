@@ -6,6 +6,7 @@ use Apps\Lib\Controller;
 use Apps\Lib\Database;
 use Apps\Lib\Request;
 use Apps\Lib\Router;
+use PDO;
 
 class Form extends Controller
 {
@@ -46,40 +47,32 @@ class Form extends Controller
             $sql->bindValue(":register_end", $reg_end);
             $sql->bindValue(":user_id", $_SESSION['id']);
             $sql->execute();
-            Router::to("/dashboard");
+            Router::to("/member/dashboard");
         } catch (\Exception $e) {
             Router::to("/member/form");
         }
     }
 
+    public function selectEvt(){
+        $id_event= $_GET['id_event'];
+        $conn = (new Database())->connect();
+        $event_data = $conn->prepare('SELECT form.regno, login.fullname, login.email, login.address, login.phone FROM form JOIN login ON form.id_pendaftar = login.id AND form.id_event =:id_evt;');
+        $event_data->bindValue(":id_evt", $id_event);
+        $event_data->execute();
+        $event = $event_data->fetchAll(PDO::FETCH_ASSOC);
+
+        echo json_encode($event);
+    }
+
     public function registration(Request $request)
     {
-        $display_prompts = [
-            'id' => 'ID',
-            'timestamp' => 'Timestamp',
-            'participant_name' => 'Particpant Name',
-            'regno' => 'Registration Number',
-            'dept' => 'Department',
-            'year' => 'Year',
-            'college' => 'College Name',
-            'github' => 'GitHub Profile link',
-            'email' => 'Email Address',
-            'phoneno' => 'Contact number',
-            'linkedin' => 'LinkedIn Profile URL',
-        ];
-        $event = "Choose an event";
-        $totalPages = 1;
-        $get = $request->getGet();
-        $page = empty($get['page']) ? 1 : $get['page'];
-        $perPage =  empty($get['perPage']) ? 10 : $get['perPage'];
-        if (empty($get['search'])) $get['search'] = "";
-
+        $conn = (new Database())->connect();
+        $event_data = $conn->prepare('SELECT * FROM events');
+        $event_data->execute();
+        $event = $event_data->fetchAll(PDO::FETCH_ASSOC);
+    
         $data = [
-            "display_prompts" => $display_prompts,
             "event" => $event,
-            "total_pages" => $totalPages,
-            "page" => $page,
-            "per_page" => $perPage
         ];
         self::view("form-registration", $data);
     }

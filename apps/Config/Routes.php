@@ -98,6 +98,10 @@ Router::post("/member/form", function (Req $req, Res $res) {
     Form::addEvent($req);
 });
 
+Router::get("/member/form/selectevt", function (Req $req) {
+    Form::selectEvt($req);
+});
+
 Router::get("/member/form/reg", function (Req $req, Res $res) {
     (new Form())->registration($req);
 });

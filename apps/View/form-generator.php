@@ -32,7 +32,7 @@
                     <div class="col">
                       <div class="form-group">
                         <textarea class="form-control" placeholder="Event Description" name="event_desc" id="event_desc" required></textarea>
-                      </div>
+                    </div>
                     </div>
                   </div>
                   <div class="form-row">
