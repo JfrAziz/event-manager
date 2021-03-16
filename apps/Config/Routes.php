@@ -4,6 +4,7 @@ namespace Apps\Config;
 
 use Apps\Controller\Auth;
 use Apps\Controller\Certificate;
+use Apps\Controller\Event;
 use Apps\Controller\Form;
 use Apps\Controller\Home;
 use Apps\Controller\Mail;
@@ -93,12 +94,18 @@ Router::get("/member/form", function () {
     Form::index();
 });
 
-Router::post("/member/form/addevent", function (Req $req, Res $res) {
-    Form::addEvent($req, $res);
+Router::post("/member/form", function (Req $req, Res $res) {
+    Form::addEvent($req);
 });
 
 Router::get("/member/form/reg", function (Req $req, Res $res) {
     (new Form())->registration($req);
+});
+
+
+// ALl event
+Router::get("/member/event", function () {
+    Event::index();
 });
 
 
@@ -117,7 +124,7 @@ Router::get("/member/mail/list", function () {
 });
 
 
-// Cerricate
+// Certificate
 
 Router::get("/member/certificate", function () {
     (new Certificate())->index();

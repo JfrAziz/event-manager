@@ -5,7 +5,6 @@ namespace Apps\Controller;
 use Apps\Lib\Controller;
 use Apps\Lib\Database;
 use Apps\Lib\Request;
-use Apps\Lib\Response;
 use Apps\Lib\Router;
 
 class Form extends Controller
@@ -16,19 +15,19 @@ class Form extends Controller
         if (empty($_SESSION)) Router::to("/login");
     }
 
-    public function index()
+    public static function index()
     {
+        session_start();
         self::view("form-generator");
     }
 
-    public function addEvent(Request $request, Response $response){
+    public static function addEvent(Request $request){
         session_start();
         $data = $request->getBody();
 
         $name = $data['event_name'];
-        $uid = $_SESSION['id'];
         $desc = $data['event_desc'];
-        $num = $data['event_participant'];
+        $num = $data['event_max'];
         $event_start = $data['event_start_date'].' '.$data['event_start_time'].':00';
         $event_end = $data['event_end_date'].' '.$data['event_end_time'].':00';
         $reg_start = $data['reg_start_date'].' '.$data['reg_start_time'].':00';
@@ -36,20 +35,20 @@ class Form extends Controller
 
         try {
             $conn = (new Database())->connect();
-            $sql = $conn->prepare('INSERT INTO events (event_name, event_desc, event_participant, event_date_start, event_date_end, register_date_start, register_date_end, uid) 
-            VALUES (:event_name, :event_desc, :event_participant, :event_date_start, :event_date_end, :register_date_start, :register_date_end, :usid);');
-            $sql->bindValue(":event_name", $name);
-            $sql->bindValue(":event_desc", $desc);
-            $sql->bindValue(":event_participant", $num);
-            $sql->bindValue(":event_date_start", $event_start);
-            $sql->bindValue(":event_date_end", $event_end);
-            $sql->bindValue(":register_date_start", $reg_start);
-            $sql->bindValue(":register_date_end", $reg_end);
-            $sql->bindValue(":usid", $uid);
+            $sql = $conn->prepare('INSERT INTO events (name, description, max_participant, start_time, end_time, register_start, register_end, user_id) 
+            VALUES (:name, :description, :max_participant, :start_time, :end_time, :register_start, :register_end, :user_id);');
+            $sql->bindValue(":name", $name);
+            $sql->bindValue(":description", $desc);
+            $sql->bindValue(":max_participant", $num);
+            $sql->bindValue(":start_time", $event_start);
+            $sql->bindValue(":end_time", $event_end);
+            $sql->bindValue(":register_start", $reg_start);
+            $sql->bindValue(":register_end", $reg_end);
+            $sql->bindValue(":user_id", $_SESSION['id']);
             $sql->execute();
-            echo "sukses";
+            Router::to("/dashboard");
         } catch (\Exception $e) {
-            echo "gagal";
+            Router::to("/member/form");
         }
     }
 

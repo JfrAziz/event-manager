@@ -20,7 +20,7 @@
             </div>
             <div class="card-body">
               <div>
-                <form action="" method="post" class="col" onsubmit="return validate_form()">
+                <form action="<?= base_url("/member/form") ?>" method="post" class="col" onsubmit="return validate_form()">
                   <div class="form-row">
                     <div class="col">
                       <div class="form-group">
@@ -31,7 +31,7 @@
                   <div class="form-row">
                     <div class="col">
                       <div class="form-group">
-                        <textarea class="form-control" placeholder="Event Description" style="height: 100px;" name="event_desc" id="event_desc" required></textarea>
+                        <textarea class="form-control" placeholder="Event Description" name="event_desc" id="event_desc" required></textarea>
                       </div>
                     </div>
                   </div>

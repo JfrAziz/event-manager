@@ -14,56 +14,51 @@
 				</a>
 			</li>
 
-			<?php if (!is_admin()) : ?>
-				<hr class="sidebar-divider">
-				<div class="sidebar-heading">
-					<p class="mb-0">EVENTS</p>
-				</div>
-				<li class="nav-item" role="presentation">
-					<a class="nav-link" href="<?= base_url("/member/certificate") ?>">
-						<i class="fab fa-wpforms"></i><span class="ml-md-1">All Events</span>
-					</a>
-					<a class="nav-link" href="<?= base_url("/member/mail") ?>">
-						<i class="fas fa-medal"></i><span class="ml-md-1">My Certificate</span>
-					</a>
-				</li>
-			<?php endif; ?>
+			<hr class="sidebar-divider">
+			<div class="sidebar-heading">
+				<p class="mb-0">EVENTS</p>
+			</div>
+			<li class="nav-item" role="presentation">
+				<a class="nav-link" href="<?= base_url("/member/event") ?>">
+					<i class="fab fa-wpforms"></i><span class="ml-md-1">All Events</span>
+				</a>
+				<a class="nav-link" href="<?= base_url("/member/mail") ?>">
+					<i class="fas fa-medal"></i><span class="ml-md-1">My Certificate</span>
+				</a>
+			</li>
+			<hr class="sidebar-divider">
 
-			<?php if (is_admin()) : ?>
-				<hr class="sidebar-divider">
+			<div class="sidebar-heading">
+				<p class="mb-0">MEDIA & MARKETING</p>
+			</div>
+			<li class="nav-item" role="presentation">
+				<a class="nav-link" href="<?= base_url("/member/certificate") ?>">
+					<i class="fas fa-medal"></i><span class="ml-md-1">Certificate Generator</span>
+				</a>
+				<a class="nav-link" href="<?= base_url("/member/mail") ?>">
+					<i class="fas fa-mail-bulk"></i><span class="ml-md-1">Bulk Mailer</span>
+				</a>
+			</li>
 
-				<div class="sidebar-heading">
-					<p class="mb-0">MEDIA & MARKETING</p>
-				</div>
-				<li class="nav-item" role="presentation">
-					<a class="nav-link" href="<?= base_url("/member/certificate") ?>">
-						<i class="fas fa-medal"></i><span class="ml-md-1">Certificate Generator</span>
-					</a>
-					<a class="nav-link" href="<?= base_url("/member/mail") ?>">
-						<i class="fas fa-mail-bulk"></i><span class="ml-md-1">Bulk Mailer</span>
-					</a>
-				</li>
+			<hr class="sidebar-divider">
 
-				<hr class="sidebar-divider">
-
-				<div class="sidebar-heading">
-					<p class="mb-0">Events</p>
-				</div>
-				<li class="nav-item" role="presentation">
-					<a class="nav-link" href="<?= base_url("/member/form") ?>">
-						<i class="fab fa-wpforms"></i><span class="ml-md-1">Form Generator</span>
-					</a>
-				</li>
-				<li class="nav-item" role="presentation">
-					<a class="nav-link" href="<?= base_url("/member/form/reg") ?>">
-						<i class="fa fa-eye"></i><span class="ml-md-1">View Registration</span>
-					</a>
-				</li>
+			<div class="sidebar-heading">
+				<p class="mb-0">Events</p>
+			</div>
+			<li class="nav-item" role="presentation">
+				<a class="nav-link" href="<?= base_url("/member/form") ?>">
+					<i class="fab fa-wpforms"></i><span class="ml-md-1">Event Creation</span>
+				</a>
+			</li>
+			<li class="nav-item" role="presentation">
+				<a class="nav-link" href="<?= base_url("/member/form/reg") ?>">
+					<i class="fa fa-eye"></i><span class="ml-md-1">View Registration</span>
+				</a>
+			</li>
 		</ul>
-	<?php endif; ?>
 
-	<div class="text-center d-none d-md-inline">
-		<button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
-	</div>
+		<div class="text-center d-none d-md-inline">
+			<button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
+		</div>
 	</div>
 </nav>

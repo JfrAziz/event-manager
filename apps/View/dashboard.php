@@ -22,7 +22,7 @@
                   <div class="row align-items-center no-gutters">
                     <div class="col mr-2">
                       <div class="text-uppercase text-custom-primary font-weight-bold text-xs mb-1">
-                        <span>Registrations for <?= ucwords(str_replace("event ", "", (str_replace("_", " ", $event_table)))); ?> (Latest)</span>
+                        <span>Registrations for ..</span>
                       </div>
                       <div class="text-dark font-weight-bold h5 mb-0">
                         <span>0</span>
@@ -63,7 +63,7 @@
                         <span>Events conducted so far</span>
                       </div>
                       <div class="text-dark font-weight-bold h5 mb-0">
-                        <span><?= $events_count; ?></span>
+                        <span>10</span>
                       </div>
                     </div>
                     <div class="col-auto">

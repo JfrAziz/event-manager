@@ -72,7 +72,7 @@
                           <div class="col">
                             <div class="form-group">
                               <label for="email"><strong>Email Address</strong></label>
-                              <input class="form-control" type="email" placeholder="user@example.com" value="<?=$email ?>" name="email">
+                              <input class="form-control" type="email" placeholder="user@example.com" value="<?= $email ?>" name="email">
                             </div>
                           </div>
                         </div>
@@ -117,11 +117,10 @@
                 </div>
               </div>
             </div>
-
-            <?php include_once "_partials/footer.php" ?>
           </div>
         </div>
       </div>
+      <?php include_once "_partials/footer.php" ?>
     </div>
   </div>
   <?php include_once "_partials/scripts.php" ?>
