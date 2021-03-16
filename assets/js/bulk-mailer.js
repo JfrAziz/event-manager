@@ -87,16 +87,16 @@ $(document).ready(function () {
     function confirm(msg) {
         return $('body').prepend(`
         <div id='konfir' style="position: fixed; top: 0; bottom: 0; right: 0; left: 0; z-index: 100; display: flex; justify-content: center; align-items: center; background-color:rgba(0, 0, 0,0.3);">
-          <div style="transition: all 700ms; background-color: rgba(156, 163, 175, 0); margin-left: 20px; margin-right: 20px; display: none; opacity: 0;">
-            <div style="background-color: white; border-radius: 0.6rem; display: flex; flex-direction: column; justify-content: center; justify-items: center; padding: 1rem 1rem 0.9rem 1rem; border-top: 7px solid rgb(55,93,255); box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 4px 0px inset;">
-              <p style="margin-bottom: 1.3rem; text-align: justify;font-weight: 600;">${msg}</p>
-              <div id="btn-konfir" style="color: white; display: flex; justify-content: flex-end;">
-                <div style="font-weight: 700; border-radius: 1rem; width:5rem; margin-right: 0.5rem; font-size: 0.875rem; line-height: 1.25rem; display: flex; justify-content: center; align-items: center; cursor: pointer; padding-top: 0.25rem;padding-bottom: 0.25rem; transition: all 300ms;" class="buttonBatal">BATAL</div>
-                <div class="buttonOk" style="border-radius: 1rem; width: 5rem; font-size: 0.875rem; line-height: 1.25rem; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: all 300ms;" class="hover:bg-red-800 bg-red-600">OK</div>
-              </div>
+        <div style="transition: all 700ms; background-color: rgba(156, 163, 175, 0); margin-left: 20px; margin-right: 20px; display:none; opacity:0;">
+          <div style="background-color: white; border-radius: 0.6rem; display: flex; flex-direction: column; justify-content: center; justify-items: center; padding: 1rem 1rem 0.9rem 1rem; border-top: 7px solid #bf4aa8; box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 4px 0px inset;">
+            <p style="margin-bottom: 1.3rem; text-align: justify;font-weight: 600;">${msg}</p>
+            <div id="btn-konfir" style="color: white; display: flex; justify-content: flex-end;">
+              <div style="font-weight: 700; border-radius: 1rem; width:5rem; margin-right: 0.5rem; font-size: 0.875rem; line-height: 1.25rem; display: flex; justify-content: center; align-items: center; cursor: pointer; padding-top: 0.25rem;padding-bottom: 0.25rem; transition: all 300ms;" class="buttonBatal">BATAL</div>
+              <div class="buttonOk" style="border-radius: 1rem; width: 5rem; font-size: 0.875rem; line-height: 1.25rem; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: all 300ms;">OK</div>
             </div>
           </div>
         </div>
+      </div>
         `)
     }
 
