@@ -25,7 +25,7 @@
                         <span>Registrations for ..</span>
                       </div>
                       <div class="text-dark font-weight-bold h5 mb-0">
-                        <span>0</span>
+                        <span><?= $form_count[0]['count']; ?></span>
                       </div>
                     </div>
                     <div class="col-auto">
@@ -44,7 +44,7 @@
                         <span>Total Members</span>
                       </div>
                       <div class="text-dark font-weight-bold h5 mb-0">
-                        <span>37</span>
+                        <span><?= $member_count[0]['count']; ?></span>
                       </div>
                     </div>
                     <div class="col-auto">
@@ -63,7 +63,7 @@
                         <span>Events conducted so far</span>
                       </div>
                       <div class="text-dark font-weight-bold h5 mb-0">
-                        <span>10</span>
+                        <span><?= $event_count[0]['count']; ?></span>
                       </div>
                     </div>
                     <div class="col-auto">

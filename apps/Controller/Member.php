@@ -6,6 +6,7 @@ use Apps\Lib\Controller;
 use Apps\Lib\Database;
 use Apps\Lib\Request;
 use Apps\Lib\Router;
+use PDO;
 
 class Member extends Controller
 {
@@ -18,20 +19,23 @@ class Member extends Controller
     public function index()
     {
         $conn = (new Database())->connect();
+        $event_data = $conn->prepare('SELECT COUNT(*) as "count" FROM events');
+        $event_data->execute();
+        $coutEvt = $event_data->fetchAll(PDO::FETCH_ASSOC);
+        
+        $login_data = $conn->prepare('SELECT COUNT(*) as "count" FROM login');
+        $login_data->execute();
+        $coutMem = $login_data->fetchAll(PDO::FETCH_ASSOC);
 
-        // $result = $conn->prepare('SELECT CONCAT("event_",LOWER(REPLACE((SELECT `event_name` FROM `events` order by `event_date_start` desc limit 1)," ","_"))) as code');
-        // $result->execute();
-        // $row = $result->fetch();
-        // $eventTable = $row[0];
-
-        // $result = $conn->prepare('SELECT COUNT(*) as code FROM events;');
-        // $result->execute();
-        // $row = $result->fetch();
-        // $eventsCount = $row[0];
-
+        $form_data = $conn->prepare('SELECT COUNT(*) as "count" FROM form');
+        $form_data->execute();
+        $coutForm = $form_data->fetchAll(PDO::FETCH_ASSOC);
+        
+        
         $data = [
-            // "event_table" => $eventTable,
-            // "events_count" => $eventsCount
+            "form_count" => $coutForm,
+            "event_count" => $coutEvt,
+            "member_count" => $coutMem
         ];
         self::view("dashboard", $data);
     }
