@@ -297,3 +297,10 @@ body.loading .modalLoad {
 body.loading .modalLoad {
     display: block;
 }
+/*datatables*/
+table.dataTable thead th {
+    border-bottom: 0;
+  }
+  table.dataTable.no-footer {
+    border-bottom: 0;
+  }

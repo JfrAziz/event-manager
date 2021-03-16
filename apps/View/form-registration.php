@@ -58,7 +58,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <table id="table-data">
+                            <table id="table-data" class="table table-active table-hover table-bordered">
                                 <thead>
                                     <tr>
                                         <th>No reg</th>
