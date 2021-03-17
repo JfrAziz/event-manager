@@ -102,6 +102,40 @@ html {
     border-top-color: rgb(255, 243, 205);
 }
 
+@media (max-width:700px) {
+    #select-event label {
+        font-size: 13px;
+    }
+
+    #select-event select {
+        width: 100%;
+    }
+
+    #select-event {
+        flex-direction: column;
+    }
+
+    #wrapper form {
+        margin-top: -10px;
+    }
+}
+
+@media (min-width:701px) {
+    #select-event select {
+        width: 50%;
+    }
+
+    #select-event {
+        flex-direction: row;
+    }
+}
+
+@media (min-width:1100px) {
+    #select-event select {
+        width: 70%;
+    }
+}
+
 /* custom style bulk mailer */
 
 .logo {
@@ -272,24 +306,21 @@ html {
    with position:fixed. Width, height, top and left speak
    for themselves. Background we set to 80% white with
    our animation centered, and no-repeating */
-   .modalLoad {
-    display:    none;
-    position:   fixed;
-    z-index:    1000;
-    top:        0;
-    left:       0;
-    height:     100%;
-    width:      100%;
-    background: rgba(255, 255, 255, 0.5) 
-                url('https://icons8.com/preloaders/preloaders/808/Fading%20fountain.gif') 
-                50% 50% 
-                no-repeat;
+.modalLoad {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.5) url('https://icons8.com/preloaders/preloaders/808/Fading%20fountain.gif') 50% 50% no-repeat;
 }
 
 /* When the body has the loading class, we turn
    the scrollbar off with overflow:hidden */
 body.loading .modalLoad {
-    overflow: hidden;   
+    overflow: hidden;
 }
 
 /* Anytime the body has the loading class, our
@@ -297,10 +328,12 @@ body.loading .modalLoad {
 body.loading .modalLoad {
     display: block;
 }
+
 /*datatables*/
 table.dataTable thead th {
     border-bottom: 0;
-  }
-  table.dataTable.no-footer {
+}
+
+table.dataTable.no-footer {
     border-bottom: 0;
-  }
+}

@@ -16,6 +16,15 @@
             </div>
             <div class="card-body m-3">
               <form method="POST" action="send.php" id="form" enctype="multipart/form-data" style="margin-left: -10px; margin-right: -10px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;margin-bottom: 20px;" id="select-event">
+                  <label for="event-name" style="margin-top: 10px;">Pilih User Berdasarkan Event :</label>
+                  <select class="custom-select" id="event-name">
+                    <option selected value="all">Semua</option>
+                    <?php foreach ($events as $event) : ?>
+                      <option value="<?= $event['id']; ?>"><?= $event['name']; ?></option>
+                    <?php endforeach; ?>
+                  </select>
+                </div>
                 <div class="form-row" id="subject">
                   <div class="col">
                     <div class="form-group" style="margin-bottom: 25px;">

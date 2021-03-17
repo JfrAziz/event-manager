@@ -30,6 +30,23 @@ $(document).ready(function () {
        <i class="fa fa-search" style="position:absolute; top:13px;left:5px"></i>
     `)
 
+    $('#select-event select').change(function () {
+        let nameEvent = $(this).val()
+        if (nameEvent == "all" && $("#select-event option:selected").text() == "Semua") {
+            nameEvent == "all"
+        }
+        $.ajax({
+            type: "POST",
+            url: 'changeEvent',
+            data: {
+                nameEvent: nameEvent
+            },
+            success: function (response) {
+                $('#user_table tbody').html(response)
+            }
+        });
+    })
+
     $('#allcheck').click(function () {
         $('.single_select').prop('checked', $(this).prop('checked'))
     })

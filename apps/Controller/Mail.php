@@ -25,8 +25,13 @@ class Mail extends Controller
         $result = $conn->prepare('SELECT * FROM login ORDER BY id');
         $result->execute();
         $user_data = $result->fetchAll(PDO::FETCH_ASSOC);
+
+        $events = $conn->prepare('SELECT * FROM events');
+        $events->execute();
+        $result_event = $events->fetchAll(PDO::FETCH_ASSOC);
         $data = [
-            "user_data" => $user_data
+            "user_data" => $user_data,
+            "events" => $result_event
         ];
         self::view("mail-bulk", $data);
     }
@@ -114,5 +119,36 @@ class Mail extends Controller
     public function list()
     {
         self::view("mail-list");
+    }
+
+    public function changeEvent()
+    {
+        $conn = (new Database())->connect();
+        if ($_POST['nameEvent'] == "all") {
+            $result = $conn->prepare('SELECT * FROM login ORDER BY id');
+            $result->execute();
+            $user_data = $result->fetchAll(PDO::FETCH_ASSOC);
+            $data = [
+                "users" => $user_data,
+                "all" => true
+            ];
+        } else {
+            $user_events = $conn->prepare('SELECT * FROM form WHERE id_event=:id');
+            $user_events->bindValue(':id', (int)$_POST['nameEvent']);
+            $user_events->execute();
+            $result_event = $user_events->fetchAll(PDO::FETCH_ASSOC);
+            $user_data = [];
+            foreach ($result_event as $row) {
+                $result = $conn->prepare('SELECT * FROM login WHERE id=:id_user');
+                $result->bindValue(":id_user", $row["id_pendaftar"]);
+                $result->execute();
+                $user_data[] = $result->fetchAll(PDO::FETCH_ASSOC);
+            }
+            $data = [
+                "users" => $user_data,
+                "all" => false
+            ];
+        }
+        self::view("user-event-bulkMailer", $data);
     }
 }
