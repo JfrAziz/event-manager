@@ -31,6 +31,7 @@
                   <div class="form-row">
                     <div class="col">
                       <div class="form-group">
+                      <label for="editor">Event Description</label>
                         <textarea id="editor" class="ckeditor" placeholder="Event Description" name="event_desc" id="event_desc" required></textarea>
                     </div>
                     </div>

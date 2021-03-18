@@ -336,12 +336,8 @@ table.dataTable thead th {
 
 table.dataTable.no-footer {
     border-bottom: 0;
-<<<<<<< HEAD
   }
 
   textarea {
     resize: none;
   }
-=======
-}
->>>>>>> 2f3cfd7c1004c72983ad8421016da74295076d17
