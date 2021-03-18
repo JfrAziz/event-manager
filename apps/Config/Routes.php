@@ -123,6 +123,10 @@ Router::post("/member/sendEmail", function () {
     (new Mail())->send();
 });
 
+Router::post("/member/changeEvent", function () {
+    (new Mail())->changeEvent();
+});
+
 Router::get("/member/mail/list", function () {
     (new Mail())->list();
 });
