@@ -59,9 +59,21 @@
                     <span aria-hidden="true" style="font-size: 20px;">&times;</span>
                   </button>
                 </div>
+
                 <div class="table-responsive table">
                   <div class="col px-1">
                     <table id="user_table" class="table display nowrap" style="width: 100%;">
+                      <div class="top">
+                        <div class="pull-left">
+                          <div id="user_table_filter">
+                            <label>
+                              <input id="search" type="search" class="form-control" placeholder="Pencarian">
+                              <i class="fa fa-search" style="position:absolute; top:13px;left:5px"></i>
+                            </label>
+                          </div>
+                        </div>
+                        <div class="pull-right"></div>
+                      </div>
                       <thead>
                         <tr>
                           <th>Nama</th>
@@ -69,7 +81,7 @@
                           <th class="text-center" style="-moz-user-select: none;user-select: none;">
                             <div id="pop" data-container="body" data-trigger="manual" data-toggle="popover" data-placement="top" data-content="Pilih Alamat Email Pengiriman">
                               <label for="allcheck" class="pb-0 mb-0 mr-2" style="cursor: pointer;">Pilih Semua</label>
-                              <input type="checkbox" id="allcheck" style="cursor: pointer;">
+                              <input type="checkbox" data-checked="false" id="allcheck" style="cursor: pointer;">
                             </div>
                           </th>
                         </tr>
@@ -81,7 +93,7 @@
                             <td><?= $row["email"] ?></td>
                             <td>
                               <div class="text-center">
-                                <input style="cursor: pointer;" type="checkbox" name="single_select" class="single_select" data-email='<?= $row["email"] ?>' data-name='<?= $row['fullname'] ?>' />
+                                <input style="cursor: pointer;" type="checkbox" name="<?= 'select-' . $row["id"]; ?>" class="single_select" data-checked="false" data-email='<?= $row["email"] ?>' data-name='<?= $row['fullname'] ?>'>
                               </div>
                             </td>
                           </tr>
@@ -120,7 +132,7 @@
   </div>
 
   <?php include_once "_partials/scripts.php" ?>
-  <script src="<?= base_url("assets/js/bulk-mailer.js") ?>"></script>
 </body>
+<script src="<?= base_url("assets/js/bulk-mailer.js") ?>"></script>
 
 </html>

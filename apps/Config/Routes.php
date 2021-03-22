@@ -127,6 +127,10 @@ Router::post("/member/changeEvent", function () {
     (new Mail())->changeEvent();
 });
 
+Router::post("/member/searchAjax", function () {
+    (new Mail())->search();
+});
+
 Router::get("/member/mail/list", function () {
     (new Mail())->list();
 });

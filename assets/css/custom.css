@@ -50,7 +50,7 @@ html {
 }
 
 #user_table_filter input {
-    transform: translate(-5px, 3px);
+    transform: translate(-2px, 3px);
     margin-bottom: 3px;
     padding-left: 25px;
 }
