@@ -13,4 +13,5 @@
   <link rel="stylesheet" href="<?= base_url("/assets/css/custom.css") ?>">
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+  <link rel="shortcut icon" href="<?= base_url("/assets/img/icon.png") ?>" type="image/x-icon">
 </head>

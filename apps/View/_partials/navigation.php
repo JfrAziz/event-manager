@@ -22,7 +22,7 @@
 				<a class="nav-link" href="<?= base_url("/member/event") ?>">
 					<i class="fab fa-wpforms"></i><span class="ml-md-1">All Events</span>
 				</a>
-				<a class="nav-link" href="<?= base_url("/member/mail") ?>">
+				<a class="nav-link" href="<?= base_url("/member/certificate") ?>">
 					<i class="fas fa-medal"></i><span class="ml-md-1">My Certificate</span>
 				</a>
 			</li>
@@ -32,9 +32,6 @@
 				<p class="mb-0">MEDIA & MARKETING</p>
 			</div>
 			<li class="nav-item" role="presentation">
-				<a class="nav-link" href="<?= base_url("/member/certificate") ?>">
-					<i class="fas fa-medal"></i><span class="ml-md-1">Certificate Generator</span>
-				</a>
 				<a class="nav-link" href="<?= base_url("/member/mail") ?>">
 					<i class="fas fa-mail-bulk"></i><span class="ml-md-1">Bulk Mailer</span>
 				</a>

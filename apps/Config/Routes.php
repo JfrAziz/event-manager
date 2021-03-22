@@ -16,7 +16,11 @@ use Apps\Lib\Router;
 // Public
 
 Router::get("/", function () {
-    Home::index();
+    (new Home())->index();
+});
+
+Router::get("/e/([0-9]*)", function (Req $req, Res $res) {
+    (new Home())->show($req);
 });
 
 
@@ -99,7 +103,7 @@ Router::post("/member/form", function (Req $req, Res $res) {
 });
 
 Router::get("/member/form/selectevt", function (Req $req) {
-    Form::selectEvt($req);
+    (new Form())->selectEvt($req);
 });
 
 Router::get("/member/form/reg", function (Req $req, Res $res) {
@@ -109,7 +113,30 @@ Router::get("/member/form/reg", function (Req $req, Res $res) {
 
 // ALl event
 Router::get("/member/event", function () {
-    Event::index();
+    (new Event())->index();
+});
+
+Router::get("/member/event", function () {
+    (new Event())->index();
+});
+
+Router::post("/member/event/register", function (Req $req, Res $res) {
+    (new Event())->register($req);
+});
+
+Router::get("/member/event/([0-9]*)", function (Req $req, Res $res) {
+    (new Event())->show($req);
+});
+
+// Certificate
+
+Router::get("/member/certificate", function () {
+    (new Event())->certificate();
+});
+
+
+Router::get("/member/certificate/([0-9]*)", function (Req $req, Res $res) {
+    (new Event())->showCertificate($req);
 });
 
 
@@ -136,8 +163,3 @@ Router::get("/member/mail/list", function () {
 });
 
 
-// Certificate
-
-Router::get("/member/certificate", function () {
-    (new Certificate())->index();
-});

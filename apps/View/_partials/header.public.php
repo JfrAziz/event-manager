@@ -2,7 +2,7 @@
   <div class="container d-flex align-items-center">
     <div class="d-none d-md-flex">
       <a href="<?= base_url() ?>" rel="home" class="logo d-flex align-items-center">
-        <img alt="BootstrapMade" src="https://dummyimage.com/50x50" width="50" height="50">
+        <img alt="BootstrapMade" src="<?= base_url("/assets/img/logo.png") ?>" height="50">
       </a>
     </div>
     <ul class="nav navbar-nav flex-nowrap ml-auto">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <?php include_once "_partials/head.php" ?>
 
@@ -15,7 +15,7 @@
 
         <div class="container-fluid">
           <?php foreach ($data as $item) : ?>
-            <a href="<?= base_url("/member/event/{$item['id']}") ?>">
+            <a href="<?= base_url("/member/certificate/{$item['id']}") ?>">
               <div class="card shadow py-2 my-3">
                 <div class="card-body">
                   <div class="row align-items-center no-gutters">
