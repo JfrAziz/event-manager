@@ -23,7 +23,7 @@
                       <span><?= $item['name'] ?></span>
                     </div>
                     <div class="text-dark text-sm mb-0">
-                      <span><?= $item['description']  ?></span>
+                    <?= htmlspecialchars_decode(stripslashes($item['description']));?>   
                     </div>
                   </div>
                   <div class="col-auto">
