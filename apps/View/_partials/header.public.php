@@ -8,7 +8,7 @@
     <ul class="nav navbar-nav flex-nowrap ml-auto">
       <form class="form-inline ml-auto mr-2 mr-md-5">
         <div class="input-group">
-          <input class="bg-light form-control border-1" type="text" placeholder="Search event">
+          <input class="bg-light form-control border-1" type="text" placeholder="Cari event">
           <div class="input-group-append">
             <button class="btn btn-custom-primary text-white py-0" type="button"><i class="fas fa-search"></i></button>
           </div>

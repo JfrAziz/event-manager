@@ -20,10 +20,10 @@
 			</div>
 			<li class="nav-item" role="presentation">
 				<a class="nav-link" href="<?= base_url("/member/event") ?>">
-					<i class="fab fa-wpforms"></i><span class="ml-md-1">Semua Events</span>
+					<i class="fab fa-wpforms"></i><span class="ml-md-1">Semua Event</span>
 				</a>
 				<a class="nav-link" href="<?= base_url("/member/certificate") ?>">
-					<i class="fas fa-medal"></i><span class="ml-md-1">My event</span>
+					<i class="fas fa-medal"></i><span class="ml-md-1">Event Saya</span>
 				</a>
 			</li>
 			<hr class="sidebar-divider">

@@ -22,7 +22,7 @@
                       <input class="form-control form-control-user" type="text" placeholder="Username" name="username">
                     </div>
                     <div class="form-group">
-                      <input class="form-control form-control-user" type="text" placeholder="Fullname" name="fullname">
+                      <input class="form-control form-control-user" type="text" placeholder="Nama Lengkap" name="fullname">
                     </div>
                     <div class="form-group">
                       <input class="form-control form-control-user" type="email" placeholder="Email" name="email">
@@ -31,7 +31,7 @@
                       <input class="form-control form-control-user" type="password" placeholder="Password" name="password">
                     </div>
                     <div class="form-group">
-                      <input class="form-control form-control-user" type="password" placeholder="Password Confirmation" name="password_conf">
+                      <input class="form-control form-control-user" type="password" placeholder="Konfirmasi Password" name="password_conf">
                     </div>
                     <button class="btn btn-custom-primary btn-block text-white btn-user" type="submit">REGISTER</button>
                   </form>
