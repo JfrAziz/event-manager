@@ -36,7 +36,7 @@
                     <button class="btn btn-custom-primary btn-block text-white btn-user" type="submit">REGISTER</button>
                   </form>
                   <div class="text-center">
-                    <a class="small" href="<?= base_url("login") ?>">Already Have account? Login</a>
+                    <a class="small" href="<?= base_url("login") ?>">Sudah punya akun? Login</a>
                   </div>
                 </div>
               </div>

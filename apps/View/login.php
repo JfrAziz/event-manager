@@ -27,11 +27,11 @@
                     <button class="btn btn-custom-primary btn-block text-white btn-user" type="submit">LOGIN
                     </button>
                   </form>
+                  <!-- <div class="text-center">
+                    <a class="small" href="">Lupa Password?</a>
+                  </div> -->
                   <div class="text-center">
-                    <a class="small" href="<?= base_url("forgot-password") ?>">Forgot Password?</a>
-                  </div>
-                  <div class="text-center">
-                    <a class="small" href="<?= base_url("register") ?>">Don't have account? Register</a>
+                    <a class="small" href="<?= base_url("register") ?>">Belum punya akun? Daftar</a>
                   </div>
                 </div>
               </div>

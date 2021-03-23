@@ -16,40 +16,40 @@
 
 			<hr class="sidebar-divider">
 			<div class="sidebar-heading">
-				<p class="mb-0">EVENTS</p>
+				<p class="mb-0">EVENT</p>
 			</div>
 			<li class="nav-item" role="presentation">
 				<a class="nav-link" href="<?= base_url("/member/event") ?>">
-					<i class="fab fa-wpforms"></i><span class="ml-md-1">All Events</span>
+					<i class="fab fa-wpforms"></i><span class="ml-md-1">Semua Events</span>
 				</a>
 				<a class="nav-link" href="<?= base_url("/member/certificate") ?>">
-					<i class="fas fa-medal"></i><span class="ml-md-1">My Certificate</span>
+					<i class="fas fa-medal"></i><span class="ml-md-1">My event</span>
 				</a>
 			</li>
 			<hr class="sidebar-divider">
 
 			<div class="sidebar-heading">
-				<p class="mb-0">MEDIA & MARKETING</p>
+				<p class="mb-0">MEDIA</p>
 			</div>
 			<li class="nav-item" role="presentation">
 				<a class="nav-link" href="<?= base_url("/member/mail") ?>">
-					<i class="fas fa-mail-bulk"></i><span class="ml-md-1">Bulk Mailer</span>
+					<i class="fas fa-mail-bulk"></i><span class="ml-md-1">Email Massal</span>
 				</a>
 			</li>
 
 			<hr class="sidebar-divider">
 
 			<div class="sidebar-heading">
-				<p class="mb-0">Events</p>
+				<p class="mb-0">Events Admin</p>
 			</div>
 			<li class="nav-item" role="presentation">
 				<a class="nav-link" href="<?= base_url("/member/form") ?>">
-					<i class="fab fa-wpforms"></i><span class="ml-md-1">Event Creation</span>
+					<i class="fab fa-wpforms"></i><span class="ml-md-1">Pembuatan Event</span>
 				</a>
 			</li>
 			<li class="nav-item" role="presentation">
 				<a class="nav-link" href="<?= base_url("/member/form/reg") ?>">
-					<i class="fa fa-eye"></i><span class="ml-md-1">View Registration</span>
+					<i class="fa fa-eye"></i><span class="ml-md-1">Lihat Pendaftar</span>
 				</a>
 			</li>
 		</ul>

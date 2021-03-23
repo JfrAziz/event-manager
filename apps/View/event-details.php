@@ -67,18 +67,17 @@
                 </div>
                 <div class="card-body">
                   <div class="row">
-
-                  </div>
-                  <div class="row">
                     <div class="col">
-                      <form action="<?= base_url("/member/event/register") ?>" method="post">
-                        <input type="hidden" name="event_id" value="<?= $data['id'] ?>">
-                        <?php if (!$registered) : ?>
-                          <input type="submit" value="REGISTER" class="btn btn-primary col">
-                        <?php else : ?>
-                          <span>Anda sudah terdaftar</span>
-                        <?php endif; ?>
-                      </form>
+                      <?php if ($data['user_id'] != $_SESSION['id']) : ?>
+                        <form action="<?= base_url("/member/event/register") ?>" method="post">
+                          <input type="hidden" name="event_id" value="<?= $data['id'] ?>">
+                          <?php if (!$registered) : ?>
+                            <input type="submit" value="REGISTER" class="btn btn-primary col">
+                          <?php else : ?>
+                            <span>Anda sudah terdaftar</span>
+                          <?php endif; ?>
+                        </form>
+                      <?php endif; ?>
                     </div>
                   </div>
                 </div>

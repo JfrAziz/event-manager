@@ -14,6 +14,11 @@
         <?php include_once "_partials/header.php" ?>
 
         <div class="container-fluid">
+          <?php if (empty($data)) : ?>
+            <div class="text-center font-italic">
+              Belum ada event yang dibuat
+            </div>
+          <?php endif; ?>
           <?php foreach ($data as $item) : ?>
             <a href="<?= base_url("/member/event/{$item['id']}") ?>">
               <div class="card shadow py-2 my-3">
