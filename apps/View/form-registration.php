@@ -19,13 +19,12 @@
                     <div class="row">
                         <div class="col-md-9 mb-4">
                             <form>
-                                <select id="event_select" class="form-control border-1 small"
-                                    style="width: 68%;max-width:15em;" required>
+                                <select id="event_select" class="form-control border-1 small" style="width: 68%;max-width:15em;" required>
                                     <option style="display:none" disabled selected value>Pilih Kegiatan</option>
                                     <?php foreach ($event as $row) : ?>
-                                    <option value="<?= $row['name']?>" data-id="<?= $row['id']?>" />
-                                    <?= $row['name']?>
-                                    </option>
+                                        <option value="<?= $row['name'] ?>" data-id="<?= $row['id'] ?>" />
+                                        <?= $row['name'] ?>
+                                        </option>
                                     <?php endforeach; ?>
                                 </select><br>
                             </form>
@@ -61,11 +60,11 @@
                             <table id="table-data" class="table table-active table-hover table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>No reg</th>
-                                        <th>Fullname</th>
+                                        <th>No Pendaftaran</th>
+                                        <th>Nama Lengkap</th>
                                         <th>Email</th>
-                                        <th>Address</th>
-                                        <th>Phone</th>
+                                        <th>Alamat</th>
+                                        <th>No Telepon</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -93,53 +92,53 @@
         </div>
     </div>
     <script>
-    $(document).ready(function() {
-        $('#table-data').DataTable({
-            "columns": [{
-                    "data": "regno"
-                }, {
-                    "data": "fullname"
-                },
-                {
-                    "data": "email"
-                },
-                {
-                    "data": "address"
-                },
-                {
-                    "data": "phone"
-                }
-            ]
+        $(document).ready(function() {
+            $('#table-data').DataTable({
+                "columns": [{
+                        "data": "regno"
+                    }, {
+                        "data": "fullname"
+                    },
+                    {
+                        "data": "email"
+                    },
+                    {
+                        "data": "address"
+                    },
+                    {
+                        "data": "phone"
+                    }
+                ]
+            });
         });
-    });
 
-    $('#event_select').on('change', function() {
-        var table = $('#table-data').DataTable();
-        var idEvt = $('option:selected', this).data("id");
-        table.clear();
-        $.get("http://localhost:8080/member/form/selectevt", {
-            id_event: idEvt
-        }, function(result) {
-            var data = JSON.parse(result);
-            table.rows.add(data);
-            $("#countPart").text(Object.keys(data).length);
-            table.draw();
+        $('#event_select').on('change', function() {
+            var table = $('#table-data').DataTable();
+            var idEvt = $('option:selected', this).data("id");
+            table.clear();
+            $.get("http://localhost:8080/member/form/selectevt", {
+                id_event: idEvt
+            }, function(result) {
+                var data = JSON.parse(result);
+                table.rows.add(data);
+                $("#countPart").text(Object.keys(data).length);
+                table.draw();
+            });
+            $("#event_name").text(this.value);
+
         });
-        $("#event_name").text(this.value);
-
-    });
 
 
-    $body = $("body");
+        $body = $("body");
 
-    $(document).on({
-        ajaxStart: function() {
-            $body.addClass("loading");
-        },
-        ajaxStop: function() {
-            $body.removeClass("loading");
-        }
-    });
+        $(document).on({
+            ajaxStart: function() {
+                $body.addClass("loading");
+            },
+            ajaxStop: function() {
+                $body.removeClass("loading");
+            }
+        });
     </script>
     <?php include_once "_partials/scripts.php" ?>
     <div class="modalLoad">

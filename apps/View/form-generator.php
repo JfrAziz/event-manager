@@ -43,7 +43,7 @@
                   <div class="form-row">
                     <div class="col">
                       <div class="form-group">
-                        <input class="form-control" type="number" placeholder="Limit Participant" name="event_max" required>
+                        <input class="form-control" type="number" placeholder="Limit Partisipan" name="event_max" required>
                       </div>
                     </div>
                   </div>

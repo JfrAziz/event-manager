@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Certificate Distribution System (CDS):<?php echo " ".$OrgName; ?></title>
+    <title>Certificate Distribution System (CDS):<?php echo " " . $OrgName; ?></title>
     <link rel="icon" type="image/png" sizes="600x600" href="assets/img/Logo_White.png">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
@@ -30,15 +30,17 @@
                                         <p class="mb-4">We're here to make your life much easier. Just enter the event name and watch then watch happen!</p>
                                     </div>
                                     <form class="user" action="public/cds-public.php" method="GET">
-                                        <div class="form-group"><input class="form-control form-control-user" type="text" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Event Name..." name="event" required=""></div><button class="btn btn-primary btn-block text-white btn-user"
-                                            type="submit">Search Event</button></form>
-                                            <div class="text-center"><p class="mb-4 small" style="color: red;" >
-                                            <?php 
-                                                if (!empty($_GET)) {
-                                                    echo "Event not found. Are you sure you're spelling it right?";
-                                                } 
+                                        <div class="form-group"><input class="form-control form-control-user" type="text" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Event Name..." name="event" required=""></div><button class="btn btn-primary btn-block text-white btn-user" type="submit">Cari Event</button>
+                                    </form>
+                                    <div class="text-center">
+                                        <p class="mb-4 small" style="color: red;">
+                                            <?php
+                                            if (!empty($_GET)) {
+                                                echo "Event not found. Are you sure you're spelling it right?";
+                                            }
                                             ?>
-                                            </p></div>
+                                        </p>
+                                    </div>
                                     <div class="text-center">
                                         <hr>
                                     </div>

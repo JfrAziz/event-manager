@@ -11,15 +11,15 @@
           </a>
           <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
             <a class="dropdown-item" role="presentation" href="<?= base_url("member/profile") ?>">
-              <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Profile
+              <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Profil
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" role="presentation" href="<?= base_url() ?>">
-              <i class="fas fa-link fa-sm fa-fw mr-2 text-gray-400"></i>Open Web
+              <i class="fas fa-link fa-sm fa-fw mr-2 text-gray-400"></i>Buka Web
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" role="presentation" href="<?= base_url("logout") ?>">
-              <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Logout
+              <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Keluar
             </a>
           </div>
         </div>
