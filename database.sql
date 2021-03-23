@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Mar 2021 pada 12.58
--- Versi server: 10.4.11-MariaDB
--- Versi PHP: 7.4.1
+-- Generation Time: Mar 23, 2021 at 02:05 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `certificates`
+-- Table structure for table `certificates`
 --
 
 CREATE TABLE `certificates` (
@@ -39,7 +38,7 @@ CREATE TABLE `certificates` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `events`
+-- Table structure for table `events`
 --
 
 CREATE TABLE `events` (
@@ -55,17 +54,16 @@ CREATE TABLE `events` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `events`
+-- Dumping data for table `events`
 --
 
 INSERT INTO `events` (`id`, `name`, `description`, `start_time`, `end_time`, `register_start`, `register_end`, `max_participant`, `user_id`) VALUES
-(1, 'Lorem Lorem', 'Lorem Lorem', '2021-03-20 07:34:00', '2021-03-20 07:34:00', '2021-03-18 07:35:00', '2021-03-19 07:35:00', NULL, 3),
-(2, 'Lorem', 'Lorem', '2021-03-31 07:37:00', '2021-04-01 07:37:00', '2021-03-16 07:37:00', '2021-03-30 07:37:00', 10, 3);
+(5, 'Event Kegiatan 1', '&#60;p&#62;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&#60;/p&#62;&#13;&#10;', '2021-04-10 07:00:00', '2021-04-11 12:00:00', '2021-03-23 00:00:00', '2021-04-09 23:59:00', 10, 7);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `form`
+-- Table structure for table `form`
 --
 
 CREATE TABLE `form` (
@@ -75,18 +73,16 @@ CREATE TABLE `form` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `form`
+-- Dumping data for table `form`
 --
 
 INSERT INTO `form` (`id_event`, `id_pendaftar`, `regno`) VALUES
-(2, 3, '1'),
-(2, 5, '12'),
-(1, 5, '123');
+(5, 9, '9202103235');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `login`
+-- Table structure for table `login`
 --
 
 CREATE TABLE `login` (
@@ -102,41 +98,42 @@ CREATE TABLE `login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `login`
+-- Dumping data for table `login`
 --
 
 INSERT INTO `login` (`id`, `username`, `password_hash`, `email`, `fullname`, `address`, `phone`, `signature`, `imgsrc`) VALUES
 (3, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'test@test.com', 'Mantap Admin', 'asdasdasd', NULL, NULL, '../image2.png'),
-(5, 'mantap', '8fa0559eac3de95fc4f07cff8e9c1ed882d02542', 'mantap@mantap.com', 'mantap', NULL, NULL, NULL, '../image2.png');
+(7, 'user1', '36988d81163cc909325869489569d2cca5677d7a', 'wisselrecht@waroengdo.store', 'User 1', NULL, NULL, NULL, '../image2.png'),
+(9, 'user2', '36988d81163cc909325869489569d2cca5677d7a', '221810354@stis.ac.id', 'User 2', NULL, NULL, NULL, '../image2.png');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `certificates`
+-- Indexes for table `certificates`
 --
 ALTER TABLE `certificates`
   ADD PRIMARY KEY (`id`),
   ADD KEY `regno_fk` (`regno`);
 
 --
--- Indeks untuk tabel `events`
+-- Indexes for table `events`
 --
 ALTER TABLE `events`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id_fk` (`user_id`);
 
 --
--- Indeks untuk tabel `form`
+-- Indexes for table `form`
 --
 ALTER TABLE `form`
   ADD PRIMARY KEY (`regno`),
-  ADD KEY `form_ibfk_1` (`id_event`),
-  ADD KEY `form_ibfk_2` (`id_pendaftar`);
+  ADD KEY `id_event_fk` (`id_event`),
+  ADD KEY `id_pendaftar_fk` (`id_pendaftar`);
 
 --
--- Indeks untuk tabel `login`
+-- Indexes for table `login`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`id`),
@@ -145,49 +142,49 @@ ALTER TABLE `login`
   ADD UNIQUE KEY `FullName` (`fullname`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `certificates`
+-- AUTO_INCREMENT for table `certificates`
 --
 ALTER TABLE `certificates`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `events`
+-- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `login`
+-- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `certificates`
+-- Constraints for table `certificates`
 --
 ALTER TABLE `certificates`
   ADD CONSTRAINT `regno_fk` FOREIGN KEY (`regno`) REFERENCES `form` (`regno`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `events`
+-- Constraints for table `events`
 --
 ALTER TABLE `events`
   ADD CONSTRAINT `user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `login` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `form`
+-- Constraints for table `form`
 --
 ALTER TABLE `form`
-  ADD CONSTRAINT `form_ibfk_1` FOREIGN KEY (`id_event`) REFERENCES `events` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `form_ibfk_2` FOREIGN KEY (`id_pendaftar`) REFERENCES `login` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `id_event_fk` FOREIGN KEY (`id_event`) REFERENCES `events` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `id_pendaftar_fk` FOREIGN KEY (`id_pendaftar`) REFERENCES `login` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
