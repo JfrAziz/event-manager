@@ -14,14 +14,14 @@
                 <?php include_once "_partials/header.php" ?>
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <h3 class="text-dark mb-0">View Responses</h3>
+                        <h3 class="text-dark mb-0">Lihat Pendaftar</h3>
                     </div>
                     <div class="row">
                         <div class="col-md-9 mb-4">
                             <form>
                                 <select id="event_select" class="form-control border-1 small"
                                     style="width: 68%;max-width:15em;" required>
-                                    <option style="display:none" disabled selected value>Select event</option>
+                                    <option style="display:none" disabled selected value>Pilih Kegiatan</option>
                                     <?php foreach ($event as $row) : ?>
                                     <option value="<?= $row['name']?>" data-id="<?= $row['id']?>" />
                                     <?= $row['name']?>
@@ -36,11 +36,11 @@
                                     <div class="row align-items-center no-gutters">
                                         <div class="col mr-2">
                                             <div class="text-uppercase text-success font-weight-bold text-xs mb-1">
-                                                <span>Total Responses</span>
+                                                <span>Total Pendaftar</span>
                                             </div>
                                             <div class="text-dark font-weight-bold h5 mb-0">
                                                 <span id="countPart">
-                                                    No event chosen
+                                                    Belum ada yang dipilih
                                                 </span>
                                             </div>
                                         </div>

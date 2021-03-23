@@ -12,7 +12,7 @@
         <div class="container-fluid">
           <div class="card shadow">
             <div class="card-header py-3">
-              <p class="text-primary m-0 font-weight-bold">Bulk Mailer</p>
+              <p class="text-primary m-0 font-weight-bold">Email Massal</p>
             </div>
             <div class="card-body m-3">
               <form method="POST" action="send.php" id="form" enctype="multipart/form-data" style="margin-left: -10px; margin-right: -10px;">

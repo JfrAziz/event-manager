@@ -12,7 +12,7 @@
         <div class="container-fluid">
 
           <div class="d-sm-flex justify-content-between align-items-center mb-4">
-            <h3 class="text-dark mb-0">Welcome!</h3>
+            <h3 class="text-dark mb-0">Selamat Datang!</h3>
           </div>
 
           <div class="row">
@@ -22,7 +22,7 @@
                   <div class="row align-items-center no-gutters">
                     <div class="col mr-2">
                       <div class="text-uppercase text-custom-primary font-weight-bold text-xs mb-1">
-                        <span>Registrations for ..</span>
+                        <span>Total Pendaftar</span>
                       </div>
                       <div class="text-dark font-weight-bold h5 mb-0">
                         <span><?= $form_count[0]['count']; ?></span>
@@ -41,7 +41,7 @@
                   <div class="row align-items-center no-gutters">
                     <div class="col mr-2">
                       <div class="text-uppercase text-success font-weight-bold text-xs mb-1">
-                        <span>Total Members</span>
+                        <span>Total Member</span>
                       </div>
                       <div class="text-dark font-weight-bold h5 mb-0">
                         <span><?= $member_count[0]['count']; ?></span>
@@ -60,7 +60,7 @@
                   <div class="row align-items-center no-gutters">
                     <div class="col mr-2">
                       <div class="text-uppercase text-custom-primary font-weight-bold text-xs mb-1">
-                        <span>Events conducted so far</span>
+                        <span>Kegiatan yang sudah diadakan</span>
                       </div>
                       <div class="text-dark font-weight-bold h5 mb-0">
                         <span><?= $event_count[0]['count']; ?></span>

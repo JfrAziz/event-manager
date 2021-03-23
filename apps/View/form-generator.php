@@ -16,7 +16,7 @@
         <div class="container-fluid">
           <div class="card shadow">
             <div class="card-header py-3">
-              <p class="text-custom-primary m-0 font-weight-bold">Form Generator</p>
+              <p class="text-custom-primary m-0 font-weight-bold">Pembuatan Event</p>
             </div>
             <div class="card-body">
               <div>
@@ -24,7 +24,7 @@
                   <div class="form-row">
                     <div class="col">
                       <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Event Name" name="event_name" required>
+                        <input class="form-control" type="text" placeholder="Nama Kegiatan" name="event_name" required>
                         <small id="nameHelp" class="form-text text-muted"></small>
                       </div>
                     </div>
@@ -32,7 +32,7 @@
                   <div class="form-row">
                     <div class="col">
                       <div class="form-group">
-                        <label for="editor">Event Description</label>
+                        <label for="editor">Deskripsi</label>
                         <div>
                           <textarea id="editor" class="ckeditor" placeholder="Event Description" name="event_desc" id="event_desc" required></textarea>
                           <small id="descHelp" class="form-text text-muted"></small>
@@ -49,10 +49,10 @@
                   </div>
 
                   <div class="col">
-                    <div class="row">Event Date</div>
+                    <div class="row">Tanggal Kegiatan</div>
                     <div class="row">
                       <div class="col p-0">
-                        <label class="form-control-label">Start Time:</label>
+                        <label class="form-control-label">Waktu mulai:</label>
                         <div class="form-group">
                           <input type="date" class="form-control" name="event_start_date" id="event_start_date" required>
                         </div>
@@ -61,7 +61,7 @@
                         </div>
                       </div>
                       <div class="col p-0 pl-sm-2">
-                        <label class="form-control-label">End Time:</label>
+                        <label class="form-control-label">Waktu Selesai:</label>
                         <div class="form-group">
                           <input type="date" class="form-control" name="event_end_date" id="event_end_date" required>
                         </div>
@@ -75,10 +75,10 @@
                     </div>
                   </div>
                   <div class="col">
-                    <div class="row">Register Date</div>
+                    <div class="row">Tanggal Pendaftaran</div>
                     <div class="row mb-0 pb-0">
                       <div class="col p-0">
-                        <label class="form-control-label">Start Date:</label>
+                        <label class="form-control-label">Waktu mulai:</label>
                         <div class="form-group">
                           <input type="date" class="form-control" name="reg_start_date" id="reg_start_date" required>
                         </div>
@@ -87,7 +87,7 @@
                         </div>
                       </div>
                       <div class="col p-0 pl-sm-2">
-                        <label class="form-control-label">End Date:</label>
+                        <label class="form-control-label">Waktu Selesai:</label>
                         <div class="form-group">
                           <input type="date" class="form-control" name="reg_end_date" id="reg_end_date" required>
                         </div>
