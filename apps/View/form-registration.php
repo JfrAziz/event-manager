@@ -94,7 +94,11 @@
     <script>
         $(document).ready(function() {
             $('#table-data').DataTable({
-                "columns": [{
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'excel', 'pdf', 'csv'
+                ],
+                columns: [{
                         "data": "regno"
                     }, {
                         "data": "fullname"
