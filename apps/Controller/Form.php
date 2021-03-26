@@ -66,8 +66,10 @@ class Form extends Controller
 
     public function registration(Request $request)
     {
+        $id=$_SESSION['id'];
         $conn = (new Database())->connect();
-        $event_data = $conn->prepare('SELECT * FROM events');
+        $event_data = $conn->prepare('SELECT * FROM events WHERE user_id=:id');
+        $event_data->bindValue(":id", $id);
         $event_data->execute();
         $event = $event_data->fetchAll(PDO::FETCH_ASSOC);
     
