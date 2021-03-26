@@ -21,16 +21,13 @@ class Mail extends Controller
 
     public function index()
     {
+        $id_user = $_SESSION['id'];
         $conn = (new Database())->connect();
-        $result = $conn->prepare('SELECT fullname, email FROM login');
-        $result->execute();
-        $user_data = $result->fetchAll(PDO::FETCH_ASSOC);
-
-        $events = $conn->prepare('SELECT id, name FROM events');
+        $events = $conn->prepare('SELECT id, name FROM events WHERE user_id=:id');
+        $events->bindValue(":id", $id_user);
         $events->execute();
         $result_event = $events->fetchAll(PDO::FETCH_ASSOC);
         $data = [
-            "user_data" => $user_data,
             "events" => $result_event
         ];
         self::view("mail-bulk", $data);
@@ -130,12 +127,8 @@ class Mail extends Controller
             $data_checked = [];
         }
         $conn = (new Database())->connect();
-        if ($namaEvent === 'all') {
-            $result = $conn->prepare('SELECT fullname, email FROM login');
-        } else {
-            $result = $conn->prepare('SELECT login.fullname, login.email FROM form JOIN login ON form.id_pendaftar = login.id AND form.id_event =:id;');
-            $result->bindValue(":id", (int)$namaEvent);
-        }
+        $result = $conn->prepare('SELECT login.fullname, login.email FROM form JOIN login ON form.id_pendaftar = login.id AND form.id_event =:id;');
+        $result->bindValue(":id", (int)$namaEvent);
         $result->execute();
         $result = $result->fetchAll(PDO::FETCH_ASSOC);
         $result[count($result) + '1'] = $data_checked;

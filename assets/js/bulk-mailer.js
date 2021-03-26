@@ -32,6 +32,12 @@ $(document).ready(function () {
         }
     });
 
+    $('#user_table_filter label').append(`<i class="fa fa-search" style="position:absolute; top:13px;left:8px"></i>`)
+    $('#user_table_filter input').addClass('form-control')
+    $('#user_table tbody tr').eq(0).html(`
+    <td valign="top" colspan="3" class="dataTables_empty">Data kosong</td>
+    `)
+
     let data_checked = {}
     $('.single_select').each(function () {
         data_checked[$(this).attr("name")] = $(this).data("checked")
@@ -51,6 +57,14 @@ $(document).ready(function () {
             data = Object.keys(data).map((key) => data[key] = Object.values(data)[key])
             tabel.rows.add(data)
             tabel.draw()
+            if ($('#allcheck').prop("checked")) {
+                $('.single_select').prop('checked', true)
+                $('.single_select').attr("data-checked", "true")
+                $('#allcheck').attr("data-checked", "true")
+                $('.single_select').each(function () {
+                    data_checked[$(this).attr("name")] = true
+                })
+            }
 
             for (const key in ischecked) {
                 Array.from($('.single_select')).forEach((el, i) => {
@@ -64,15 +78,20 @@ $(document).ready(function () {
             $('.single_select').click(function () {
                 $(this).attr("data-checked", $(this).prop("checked") ? "true" : "false")
                 $(this).prop("checked") ? data_checked[$(this).attr("name")] = true : data_checked[$(this).attr("name")] = false
+                let index = 0
+                $('.single_select').each(function () {
+                    if (!$(this).prop("checked")) {
+                        return
+                    }
+                    index++
+                });
+                ($('.single_select').length === index) ? $('#allcheck').prop('checked', true): $('#allcheck').prop('checked', false)
             })
         })
 
     })
 
-    $('#user_table_filter label').append(`<i class="fa fa-search" style="position:absolute; top:13px;left:8px"></i>`)
-    $('#user_table_filter input').addClass('form-control')
-
-    $('#allcheck').click(function () {
+    $('#allcheck').click(function (e) {
         $('.single_select').prop('checked', $(this).prop('checked'))
         $('.single_select').attr("data-checked", $('.single_select').prop("checked") ? "true" : "false")
         $(this).attr("data-checked", $(this).prop("checked") ? "true" : "false")
@@ -80,11 +99,6 @@ $(document).ready(function () {
         $('.single_select').each(function () {
             $(this).prop("checked") ? data_checked[$(this).attr("name")] = true : data_checked[$(this).attr("name")] = false
         })
-    })
-
-    $('.single_select').click(function () {
-        $(this).attr("data-checked", $(this).prop("checked") ? "true" : "false")
-        $(this).prop("checked") ? data_checked[$(this).attr("name")] = true : data_checked[$(this).attr("name")] = false
     })
 
     $('#pop').popover();

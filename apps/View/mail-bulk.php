@@ -15,10 +15,9 @@
               <p class="text-primary m-0 font-weight-bold">Email Massal</p>
             </div>
             <div class="card-body m-3">
-              <div style="display: flex; justify-content: space-between; align-items: center;margin: 0 -10px 20px -10px" id="select-event">
-                <label for="event-name" style="margin-top: 10px;">Pilih User Berdasarkan Event :</label>
+              <div style="margin: 0 -10px 20px -10px; width: fit-content;" id="select-event">
                 <select class="custom-select" id="event-name">
-                  <option selected value="all">Semua</option>
+                  <option selected disabled style="display: none;">Pilih Kegiatan</option>
                   <?php foreach ($events as $event) : ?>
                     <option value="<?= $event['id']; ?>"><?= $event['name']; ?></option>
                   <?php endforeach; ?>
@@ -76,17 +75,11 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <?php foreach ($user_data as $row) : ?>
-                          <tr>
-                            <td><?= $row["fullname"] ?></td>
-                            <td><?= $row["email"] ?></td>
-                            <td>
-                              <div class="text-center">
-                                <input style="cursor: pointer;" type="checkbox" name="<?= 'select-' . $row["email"]; ?>" class="single_select" data-checked="false" data-email='<?= $row["email"] ?>' data-name='<?= $row['fullname'] ?>'>
-                              </div>
-                            </td>
-                          </tr>
-                        <?php endforeach; ?>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>
