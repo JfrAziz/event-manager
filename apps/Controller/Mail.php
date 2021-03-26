@@ -22,11 +22,11 @@ class Mail extends Controller
     public function index()
     {
         $conn = (new Database())->connect();
-        $result = $conn->prepare('SELECT * FROM login ORDER BY id');
+        $result = $conn->prepare('SELECT fullname, email FROM login');
         $result->execute();
         $user_data = $result->fetchAll(PDO::FETCH_ASSOC);
 
-        $events = $conn->prepare('SELECT * FROM events');
+        $events = $conn->prepare('SELECT id, name FROM events');
         $events->execute();
         $result_event = $events->fetchAll(PDO::FETCH_ASSOC);
         $data = [
@@ -51,7 +51,7 @@ class Mail extends Controller
                 $mail->Password = 'Kelas_3SI1_60';
                 $mail->SMTPSecure = 'ssl';
                 $mail->From = '3sisteminformasi160@gmail.com';
-                $mail->FromName = 'Event Manajemen';
+                $mail->FromName = 'Event Manajemen STIS';
                 $mail->AddAddress($row["email"], $row["name"]);
                 $mail->WordWrap = 50;
                 $mail->IsHTML(true);
@@ -59,6 +59,9 @@ class Mail extends Controller
                 $mail->Body = $_POST['mail_body'];
 
                 $mail->AltBody = '';
+                if ($output != '') {
+                    $output = '';
+                }
 
                 if (isset($_FILES['files'])) {
                     $file = $_FILES['files'];
@@ -70,9 +73,6 @@ class Mail extends Controller
 
                     $total_size = 0;
                     $total_file = 0;
-                    if ($output != '') {
-                        $output = '';
-                    }
                     for ($i = 0; $i < count($file_name); $i++) {
 
                         if ($file_error[$i] == 0) {
@@ -121,129 +121,24 @@ class Mail extends Controller
         self::view("mail-list");
     }
 
-    public function search()
-    {
-        $conn = (new Database())->connect();
-        $namaEvent = $_POST['nameEvent'];
-        $input = strtolower($_POST["input"]);
-
-        if (isset($_POST['data_checked'])) {
-            $data_checked = $_POST['data_checked'];
-        } else {
-            $data_checked = [];
-        }
-
-        if ($namaEvent == "all") {
-
-            $result = $conn->query("SELECT * FROM login WHERE fullname LIKE '%$input%' OR email LIKE '%$input%' ORDER BY id");
-            $users = $result->fetchAll(PDO::FETCH_ASSOC);
-        } else {
-
-            $user_events = $conn->prepare('SELECT * FROM form WHERE id_event=:id');
-            $user_events->bindValue(':id', (int)$namaEvent);
-            $user_events->execute();
-            $result_event = $user_events->fetchAll(PDO::FETCH_ASSOC);
-            $user_data = [];
-            foreach ($result_event as $row) {
-                $id_pendaftar = $row["id_pendaftar"];
-                $result = $conn->query("SELECT * FROM login WHERE id=$id_pendaftar ORDER BY id");
-                $user_data[] = $result->fetchAll(PDO::FETCH_ASSOC);
-            }
-            $users = [];
-            foreach ($user_data as $user) {
-
-                if ($input != '') {
-                    if (strpos(strtolower($user[0]['fullname']), $input) !== false || strpos(strtolower($user[0]['email']), $input) !== false) {
-                        $users[] = [
-                            'id' => $user[0]['id'],
-                            'fullname' => $user[0]['fullname'],
-                            'email' => $user[0]['email']
-                        ];
-                    }
-                } else {
-                    $users[] = [
-                        'id' => $user[0]['id'],
-                        'fullname' => $user[0]['fullname'],
-                        'email' => $user[0]['email']
-                    ];
-                }
-            }
-        }
-        $data = [
-            "users" => $users,
-            "ischecked" => $data_checked
-        ];
-        self::view("searchAjax", $data);
-    }
-
     public function changeEvent()
     {
-        $conn = (new Database())->connect();
-        $namaEvent = $_POST['nameEvent'];
-        $input = strtolower($_POST["input"]);
-        if (isset($_POST['data_checked'])) {
-            $data_checked = $_POST['data_checked'];
+        $namaEvent = $_GET['nameEvent'];
+        if (isset($_GET['data_checked'])) {
+            $data_checked = $_GET['data_checked'];
         } else {
             $data_checked = [];
         }
-        if ($input !== "") {
-
-            if ($namaEvent == "all") {
-                $result = $conn->query("SELECT * FROM login WHERE fullname LIKE '%$input%' OR email LIKE '%$input%' ORDER BY id");
-                $users = $result->fetchAll(PDO::FETCH_ASSOC);
-            } else {
-
-                $user_events = $conn->prepare('SELECT * FROM form WHERE id_event=:id');
-                $user_events->bindValue(':id', (int)$namaEvent);
-                $user_events->execute();
-                $result_event = $user_events->fetchAll(PDO::FETCH_ASSOC);
-
-                $user_data = [];
-                foreach ($result_event as $row) {
-                    $id_pendaftar = $row["id_pendaftar"];
-                    $result = $conn->query("SELECT * FROM login WHERE id=$id_pendaftar ORDER BY id");
-                    $user_data[] = $result->fetchAll(PDO::FETCH_ASSOC);
-                }
-                $users = [];
-                foreach ($user_data as $user) {
-                    if (strpos(strtolower($user[0]['fullname']), $input) !== false || strpos(strtolower($user[0]['email']), $input) !== false) {
-                        $users[] = [
-                            'id' => $user[0]['id'],
-                            'fullname' => $user[0]['fullname'],
-                            'email' => $user[0]['email'],
-                        ];
-                    }
-                }
-            }
+        $conn = (new Database())->connect();
+        if ($namaEvent === 'all') {
+            $result = $conn->prepare('SELECT fullname, email FROM login');
         } else {
-
-            if ($namaEvent == "all") {
-                $result = $conn->prepare('SELECT * FROM login ORDER BY id');
-                $result->execute();
-                $users = $result->fetchAll(PDO::FETCH_ASSOC);
-            } else {
-                $user_events = $conn->prepare('SELECT * FROM form WHERE id_event=:id');
-                $user_events->bindValue(':id', (int)$namaEvent);
-                $user_events->execute();
-                $result_event = $user_events->fetchAll(PDO::FETCH_ASSOC);
-                $user_data = [];
-                foreach ($result_event as $row) {
-                    $result = $conn->prepare('SELECT * FROM login WHERE id=:id_user ORDER BY id');
-                    $result->bindValue(":id_user", $row["id_pendaftar"]);
-                    $result->execute();
-                    $user_data[] = $result->fetchAll(PDO::FETCH_ASSOC);
-                }
-                $users = [];
-                foreach ($user_data as $user) {
-                    $users[] = $user[0];
-                }
-            }
+            $result = $conn->prepare('SELECT login.fullname, login.email FROM form JOIN login ON form.id_pendaftar = login.id AND form.id_event =:id;');
+            $result->bindValue(":id", (int)$namaEvent);
         }
-
-        $data = [
-            "users" => $users,
-            "ischecked" => $data_checked
-        ];
-        self::view("searchAjax", $data);
+        $result->execute();
+        $result = $result->fetchAll(PDO::FETCH_ASSOC);
+        $result[count($result) + '1'] = $data_checked;
+        echo json_encode($result);
     }
 }

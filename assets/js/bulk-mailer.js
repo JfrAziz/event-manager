@@ -1,95 +1,27 @@
 $(document).ready(function () {
 
-    let data_checked = {}
-    $('#search').keyup(function () {
-        let input = $(this).val()
-        let nameEvent = $('#select-event select').val()
-
-        $('.single_select').each(function () {
-            data_checked[$(this).attr("name")] = $(this).data("checked")
-        })
-
-        $.ajax({
-            type: "POST",
-            url: "searchAjax",
-            data: {
-                input: input,
-                nameEvent: nameEvent,
-                data_checked: data_checked
+    let tabel = $('#user_table').DataTable({
+        dom: '<"top"<"pull-left"f><"pull-right"l>>rt<"bottom"<"pull-left"i><"pull-right"p>>',
+        columns: [{
+                "data": "fullname"
+            }, {
+                "data": "email"
             },
-            success: function (response) {
-                $('#user_table tbody').html(response)
-
-                Array.from(document.getElementsByClassName('single_select')).forEach(el => {
-                    if (el.getAttribute("data-checked") === "true") {
-                        el.checked = true
-                    }
-                })
-
-                $('.single_select').click(function () {
-                    $(this).attr("data-checked", $(this).prop("checked") ? "true" : "false")
-                })
-
+            {
+                "data": null,
+                "render": function (data) {
+                    return `<div class="text-center">
+                       <input style="cursor: pointer;" type="checkbox" name="select-${data["email"]}" class="single_select" data-checked="false" data-email='${data["email"]}' data-name='${data["fullname"]}'>
+                    </div>`
+                },
+                orderable: false
             }
-        })
-    })
-
-    $('#select-event select').change(function () {
-        let input = $('#search').val()
-        let nameEvent = $(this).val()
-
-        $('.single_select').each(function () {
-            data_checked[$(this).attr("name")] = $(this).data("checked")
-        })
-
-        $.ajax({
-            type: "POST",
-            url: 'changeEvent',
-            data: {
-                input: input,
-                nameEvent: nameEvent,
-                data_checked: data_checked
-            },
-            success: function (response) {
-                $('#user_table tbody').html(response)
-                Array.from(document.getElementsByClassName('single_select')).forEach(el => {
-                    if (el.getAttribute("data-checked") === "true") {
-                        el.checked = true
-                    }
-                })
-                $('.single_select').click(function () {
-                    $(this).attr("data-checked", $(this).prop("checked") ? "true" : "false")
-                })
-            }
-        });
-    })
-
-    $('#allcheck').click(function () {
-        $('.single_select').prop('checked', $(this).prop('checked'))
-        $('.single_select').attr("data-checked", $('.single_select').prop("checked") ? "true" : "false")
-        $(this).attr("data-checked", $(this).prop("checked") ? "true" : "false")
-    })
-
-    $('.single_select').click(function () {
-        $(this).attr("data-checked", $(this).prop("checked") ? "true" : "false")
-    })
-
-    $('#user_table').DataTable({
-        "dom": '<"top"<"pull-left"f><"pull-right"l>>rt<"bottom"<"pull-left"i><"pull-right"p>>',
-        stateSave: true,
+        ],
         scrollY: '25vh',
-        "scrollX": true,
-        filter: false,
+        scrollX: true,
         scrollCollapse: false,
         paging: false,
-        columns: [
-            null,
-            null,
-            {
-                orderable: false
-            },
-        ],
-        "language": {
+        language: {
             search: "_INPUT_",
             searchPlaceholder: "Pencarian",
             "search": "",
@@ -99,6 +31,61 @@ $(document).ready(function () {
             "infoFiltered": "dari total _MAX_ baris"
         }
     });
+
+    let data_checked = {}
+    $('.single_select').each(function () {
+        data_checked[$(this).attr("name")] = $(this).data("checked")
+    })
+
+    $('#select-event select').change(function () {
+        let tabel = $('#user_table').DataTable()
+        let nameEvent = $(this).val()
+        tabel.clear();
+        $.get("http://localhost:8080/member/mail/changeEvent", {
+            nameEvent: nameEvent,
+            data_checked: data_checked
+        }, function (result) {
+            var data = JSON.parse(result)
+            var ischecked = data[Object.keys(data).length]
+            delete data[Object.keys(data).length]
+            data = Object.keys(data).map((key) => data[key] = Object.values(data)[key])
+            tabel.rows.add(data)
+            tabel.draw()
+
+            for (const key in ischecked) {
+                Array.from($('.single_select')).forEach((el, i) => {
+                    if ((key === $('.single_select').eq(i).attr('name')) && ischecked[key] === 'true') {
+                        $('.single_select').eq(i).attr("data-checked", "true")
+                        $('.single_select').eq(i).prop("checked", true)
+                    }
+                })
+            }
+
+            $('.single_select').click(function () {
+                $(this).attr("data-checked", $(this).prop("checked") ? "true" : "false")
+                $(this).prop("checked") ? data_checked[$(this).attr("name")] = true : data_checked[$(this).attr("name")] = false
+            })
+        })
+
+    })
+
+    $('#user_table_filter label').append(`<i class="fa fa-search" style="position:absolute; top:13px;left:8px"></i>`)
+    $('#user_table_filter input').addClass('form-control')
+
+    $('#allcheck').click(function () {
+        $('.single_select').prop('checked', $(this).prop('checked'))
+        $('.single_select').attr("data-checked", $('.single_select').prop("checked") ? "true" : "false")
+        $(this).attr("data-checked", $(this).prop("checked") ? "true" : "false")
+
+        $('.single_select').each(function () {
+            $(this).prop("checked") ? data_checked[$(this).attr("name")] = true : data_checked[$(this).attr("name")] = false
+        })
+    })
+
+    $('.single_select').click(function () {
+        $(this).attr("data-checked", $(this).prop("checked") ? "true" : "false")
+        $(this).prop("checked") ? data_checked[$(this).attr("name")] = true : data_checked[$(this).attr("name")] = false
+    })
 
     $('#pop').popover();
 
@@ -295,4 +282,4 @@ $(document).ready(function () {
         }
     })
 
-})
+});

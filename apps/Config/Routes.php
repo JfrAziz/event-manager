@@ -139,7 +139,6 @@ Router::get("/member/certificate/([0-9]*)", function (Req $req, Res $res) {
     (new Event())->showCertificate($req);
 });
 
-
 // Mail
 
 Router::get("/member/mail", function () {
@@ -150,16 +149,11 @@ Router::post("/member/sendEmail", function () {
     (new Mail())->send();
 });
 
-Router::post("/member/changeEvent", function () {
-    (new Mail())->changeEvent();
+Router::get("/member/mail/changeEvent", function (Req $req) {
+    (new Mail())->changeEvent($req);
 });
 
-Router::post("/member/searchAjax", function () {
-    (new Mail())->search();
-});
 
 Router::get("/member/mail/list", function () {
     (new Mail())->list();
 });
-
-

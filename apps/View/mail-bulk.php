@@ -15,16 +15,16 @@
               <p class="text-primary m-0 font-weight-bold">Email Massal</p>
             </div>
             <div class="card-body m-3">
+              <div style="display: flex; justify-content: space-between; align-items: center;margin: 0 -10px 20px -10px" id="select-event">
+                <label for="event-name" style="margin-top: 10px;">Pilih User Berdasarkan Event :</label>
+                <select class="custom-select" id="event-name">
+                  <option selected value="all">Semua</option>
+                  <?php foreach ($events as $event) : ?>
+                    <option value="<?= $event['id']; ?>"><?= $event['name']; ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
               <form method="POST" action="send.php" id="form" enctype="multipart/form-data" style="margin-left: -10px; margin-right: -10px;">
-                <div style="display: flex; justify-content: space-between; align-items: center;margin-bottom: 20px;" id="select-event">
-                  <label for="event-name" style="margin-top: 10px;">Pilih User Berdasarkan Event :</label>
-                  <select class="custom-select" id="event-name">
-                    <option selected value="all">Semua</option>
-                    <?php foreach ($events as $event) : ?>
-                      <option value="<?= $event['id']; ?>"><?= $event['name']; ?></option>
-                    <?php endforeach; ?>
-                  </select>
-                </div>
                 <div class="form-row" id="subject">
                   <div class="col">
                     <div class="form-group" style="margin-bottom: 25px;">
@@ -63,17 +63,6 @@
                 <div class="table-responsive table">
                   <div class="col px-1">
                     <table id="user_table" class="table display nowrap" style="width: 100%;">
-                      <div class="top">
-                        <div class="pull-left">
-                          <div id="user_table_filter">
-                            <label>
-                              <input id="search" type="search" class="form-control" placeholder="Pencarian">
-                              <i class="fa fa-search" style="position:absolute; top:13px;left:5px"></i>
-                            </label>
-                          </div>
-                        </div>
-                        <div class="pull-right"></div>
-                      </div>
                       <thead>
                         <tr>
                           <th>Nama</th>
@@ -93,7 +82,7 @@
                             <td><?= $row["email"] ?></td>
                             <td>
                               <div class="text-center">
-                                <input style="cursor: pointer;" type="checkbox" name="<?= 'select-' . $row["id"]; ?>" class="single_select" data-checked="false" data-email='<?= $row["email"] ?>' data-name='<?= $row['fullname'] ?>'>
+                                <input style="cursor: pointer;" type="checkbox" name="<?= 'select-' . $row["email"]; ?>" class="single_select" data-checked="false" data-email='<?= $row["email"] ?>' data-name='<?= $row['fullname'] ?>'>
                               </div>
                             </td>
                           </tr>
@@ -133,6 +122,6 @@
 
   <?php include_once "_partials/scripts.php" ?>
 </body>
-<script src="<?= base_url("assets/js/bulk-mailer.js") ?>"></script>
+<script src="<?= base_url('assets/js/bulk-mailer.js'); ?>"></script>
 
 </html>
