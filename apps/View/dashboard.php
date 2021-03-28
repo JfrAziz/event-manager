@@ -41,7 +41,7 @@
                   <div class="row align-items-center no-gutters">
                     <div class="col mr-2">
                       <div class="text-uppercase text-success font-weight-bold text-xs mb-1">
-                        <span>Total Member</span>
+                        <span>Total Anggota</span>
                       </div>
                       <div class="text-dark font-weight-bold h5 mb-0">
                         <span><?= $member_count[0]['count']; ?></span>
