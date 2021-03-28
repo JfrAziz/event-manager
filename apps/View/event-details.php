@@ -40,7 +40,7 @@
                   <div class="row">
                     <div class="col m-3">
                       <div class="row font-weight-bold">
-                        Deskripsi Envent
+                        Deskripsi Event
                       </div>
                       <div class="row">
                         <span><?= htmlspecialchars_decode(stripslashes($data['description'])); ?></span>
@@ -63,7 +63,7 @@
             <div class="col col-md-3">
               <div class="card shadow">
                 <div class="card-header py-3">
-                  <p class="text-custom-primary m-0 font-weight-bold">Regritrasi</p>
+                  <p class="text-custom-primary m-0 font-weight-bold">Registrasi</p>
                 </div>
                 <div class="card-body">
                   <div class="row">

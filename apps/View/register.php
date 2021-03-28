@@ -15,7 +15,7 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h4 class="text-dark mb-4">Register</h4>
+                    <h4 class="text-dark mb-4">Daftar</h4>
                   </div>
                   <form class="user" action="<?= base_url("register") ?>" method="POST">
                     <div class="form-group">
@@ -33,7 +33,7 @@
                     <div class="form-group">
                       <input class="form-control form-control-user" type="password" placeholder="Konfirmasi Password" name="password_conf">
                     </div>
-                    <button class="btn btn-custom-primary btn-block text-white btn-user" type="submit">REGISTER</button>
+                    <button class="btn btn-custom-primary btn-block text-white btn-user" type="submit">DAFTAR</button>
                   </form>
                   <div class="text-center">
                     <a class="small" href="<?= base_url("login") ?>">Sudah punya akun? Login</a>
