@@ -2,7 +2,7 @@
 	<div class="container-fluid d-flex flex-column p-0">
 
 		<a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0 px-0" href="#">
-			<div class="sidebar-brand-text">Event Generator</div>
+			<div class="sidebar-brand-text">Manajemen Acara</div>
 		</a>
 
 		<hr class="sidebar-divider my-0">

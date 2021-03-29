@@ -48,7 +48,7 @@ class Event extends Controller
 
         $registered = !empty($registered_data);
 
-        self::view("event-details", ["data" => $event_data[0], "registered" => $registered]);
+        self::view("event-details", ["data" => $event_data[0], "registered" => $registered, "allEvent" => true]);
     }
 
     public function register(Request $request)
@@ -93,6 +93,6 @@ class Event extends Controller
 
         if (empty($event_data)) Router::to("/member/event");
 
-        self::view("my-event-details", ["data" => $event_data[0]]);
+        self::view("my-event-details", ["data" => $event_data[0], "myEvent" => true]);
     }
 }

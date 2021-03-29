@@ -55,6 +55,13 @@
                   </div>
                 </div>
               </div>
+              <div class="row">
+                <div class="col mr-3" style="margin-top: -1.5rem;">
+                  <div class="row" style="display: flex; justify-content: flex-end;">
+                    <button onclick="window.history.go(-1); return false;" type="button" class="btn btn-custom-primary text-white">Kembali</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

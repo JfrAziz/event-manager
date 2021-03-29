@@ -8,14 +8,14 @@
     <ul class="nav navbar-nav flex-nowrap ml-auto">
       <form class="form-inline ml-auto mr-2 mr-md-5">
         <div class="input-group">
-          <input class="bg-light form-control border-1" type="text" placeholder="Cari event">
+          <input class="bg-light form-control border-1" type="text" placeholder="Cari Acara">
           <div class="input-group-append">
             <button class="btn btn-custom-primary text-white py-0" type="button"><i class="fas fa-search"></i></button>
           </div>
         </div>
       </form>
       <li class="nav-item d-flex align-items-center" role="presentation">
-        <a href="<?= base_url("login") ?>" class="btn btn-custom-primary text-white"><?= $_SESSION ? "DASHBOARD" : "LOGIN" ?></a>
+        <a href="<?= base_url("login") ?>" class="btn btn-custom-primary text-white"><?= $_SESSION ? "DASHBOARD" : "MASUK" ?></a>
       </li>
     </ul>
   </div>
