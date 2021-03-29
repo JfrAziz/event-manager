@@ -16,7 +16,7 @@
         <div class="container-fluid">
           <?php if (empty($data)) : ?>
             <div class="text-center font-italic">
-              Belum ada event yang dibuat
+              Belum ada acara yang dibuat
             </div>
           <?php endif; ?>
           <?php foreach ($data as $item) : ?>

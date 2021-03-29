@@ -11,7 +11,7 @@
 			<li class="nav-item" role="presentation">
 				<a class="nav-link" href="<?= base_url("/member/dashboard") ?>">
 					<div class="<?= ($dashboard) ? 'active-sideBar' : ''; ?>">
-						<i class="fas mr-2 fa-tachometer-alt"></i><span>Dashboard</span>
+						<i class="fas mr-2 fa-tachometer-alt"></i><span>Dasbor</span>
 					</div>
 				</a>
 			</li>
