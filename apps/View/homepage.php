@@ -14,7 +14,7 @@
             <h3 class="text-dark mb-0">Selamat Datang!</h3>
 
           </div>
-          <div>
+          <div id="allEvent">
             <?php foreach ($data as $item) : ?>
               <a href="<?= base_url("e/{$item['id']}") ?>">
                 <div class="card shadow py-2 my-3">
@@ -44,5 +44,21 @@
   </main>
   <?php include_once "_partials/scripts.php" ?>
 </body>
+
+<script>
+  $('#cariEvent').keyup(function() {
+    let input = $(this).val()
+    $.ajax({
+      type: "POST",
+      url: "/searchEvent",
+      data: {
+        input: input
+      },
+      success: function(response) {
+        $('#allEvent').html(`${response}`)
+      }
+    });
+  })
+</script>
 
 </html>

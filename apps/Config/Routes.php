@@ -23,6 +23,10 @@ Router::get("/e/([0-9]*)", function (Req $req, Res $res) {
     (new Home())->show($req);
 });
 
+Router::post("/searchEvent", function () {
+    (new Home())->searchEvent();
+});
+
 
 // Admin authentication and authorization 
 Router::get("/register", function () {

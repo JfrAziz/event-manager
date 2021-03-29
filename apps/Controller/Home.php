@@ -12,7 +12,7 @@ class Home extends Controller
 {
     public function __construct()
     {
-        if(session_status() == PHP_SESSION_NONE) session_start();
+        if (session_status() == PHP_SESSION_NONE) session_start();
     }
 
     public function index()
@@ -35,5 +35,22 @@ class Home extends Controller
         if (empty($event_data)) Router::to("/");
 
         self::view("homepage.detail", ["data" => $event_data[0]]);
+    }
+
+    public function searchEvent()
+    {
+        $input = $_POST['input'];
+        $conn = (new Database())->connect();
+        $sql = $conn->prepare("SELECT * from events where 
+            name LIKE ? OR start_time LIKE ? OR end_time LIKE ? OR register_start LIKE ? OR register_end LIKE ?");
+        $sql->bindValue(1, "%$input%");
+        $sql->bindValue(2, "%$input%");
+        $sql->bindValue(3, "%$input%");
+        $sql->bindValue(4, "%$input%");
+        $sql->bindValue(5, "%$input%");
+        $sql->execute();
+        $data = $sql->fetchAll(PDO::FETCH_ASSOC);
+        // var_dump($data);
+        self::view("searchEvent", ["data" => $data]);
     }
 }

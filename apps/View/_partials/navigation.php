@@ -71,9 +71,3 @@
 		</div>
 	</div>
 </nav>
-
-<script>
-	// $('.nav-link').click(function() {
-	// 	$(this).children().first().addClass('active-sideBar')
-	// })
-</script>
