@@ -12,7 +12,7 @@ class Event extends Controller
 {
     public function __construct()
     {
-        if(session_status() == PHP_SESSION_NONE) session_start();
+        if (session_status() == PHP_SESSION_NONE) session_start();
         if (empty($_SESSION)) Router::to("/login");
     }
 
@@ -22,8 +22,12 @@ class Event extends Controller
         $sql = $conn->prepare("SELECT * from events");
         $sql->bindValue(':user_id', $_SESSION['id']);
         $sql->execute();
-        $data = $sql->fetchAll(PDO::FETCH_ASSOC);
-        self::view("all-event", ["data" => $data]);
+        $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+        $data = [
+            "data" => $result,
+            "allEvent" => true
+        ];
+        self::view("all-event", $data);
     }
 
     public function show(Request $request)
@@ -70,9 +74,13 @@ class Event extends Controller
         $sql = $conn->prepare("SELECT * from events e, form f where f.id_pendaftar =:user_id AND f.id_event = e.id");
         $sql->bindValue(':user_id', $_SESSION['id']);
         $sql->execute();
-        $event_data = $sql->fetchAll(PDO::FETCH_ASSOC);
+        $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+        $event_data = [
+            "data" => $result,
+            "myEvent" => true
+        ];
 
-        self::view("my-event", ["data" => $event_data]);
+        self::view("my-event", $event_data);
     }
 
     public function showCertificate(Request $request)

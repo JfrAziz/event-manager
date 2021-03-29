@@ -22,7 +22,7 @@ class Member extends Controller
         $event_data = $conn->prepare('SELECT COUNT(*) as "count" FROM events');
         $event_data->execute();
         $coutEvt = $event_data->fetchAll(PDO::FETCH_ASSOC);
-        
+
         $login_data = $conn->prepare('SELECT COUNT(*) as "count" FROM login');
         $login_data->execute();
         $coutMem = $login_data->fetchAll(PDO::FETCH_ASSOC);
@@ -30,12 +30,13 @@ class Member extends Controller
         $form_data = $conn->prepare('SELECT COUNT(*) as "count" FROM form');
         $form_data->execute();
         $coutForm = $form_data->fetchAll(PDO::FETCH_ASSOC);
-        
-        
+
+
         $data = [
             "form_count" => $coutForm,
             "event_count" => $coutEvt,
-            "member_count" => $coutMem
+            "member_count" => $coutMem,
+            "dashboard" => true
         ];
         self::view("dashboard", $data);
     }
@@ -56,7 +57,7 @@ class Member extends Controller
         $data = $request->getBody();
         if (isset($data['photo_settings'])) {
             $file_name = $_FILES['file']['name'];
-            $target_dir =getcwd()."/assets/img/avatars/users/";
+            $target_dir = getcwd() . "/assets/img/avatars/users/";
             $target_file = $target_dir . basename($_FILES["file"]["name"]);
             $image_file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
             $extensions_arr = ["jpg", "jpeg", "png", "gif"];
@@ -70,9 +71,7 @@ class Member extends Controller
                 $sql->execute();
 
                 move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $file_name);
-            
-
-             }
+            }
         }
         Router::to("/member/profile");
     }

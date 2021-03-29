@@ -18,7 +18,7 @@
               <div class="row">
                 <div class="col m-3">
                   <div class="row font-weight-bold">
-                    Tanggal Event
+                    Nama Acara
                   </div>
                   <div class="row">
                     <span><?= $data['name'] ?></span>
@@ -38,9 +38,9 @@
               <div class="row">
                 <div class="col m-3">
                   <div class="row font-weight-bold">
-                    Deskripsi Envent
+                    Deskripsi Acara
                   </div>
-                  <div class="row">
+                  <div class="row" style="text-align: justify;">
                     <span><?= htmlspecialchars_decode(stripslashes($data['description'])); ?></span>
                   </div>
                 </div>
@@ -48,7 +48,7 @@
               <div class="row">
                 <div class="col m-3">
                   <div class="row font-weight-bold">
-                    Pembuat Event
+                    Pembuat Acara
                   </div>
                   <div class="row">
                     <span><?= $data['fullname'] ?></span>

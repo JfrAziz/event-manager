@@ -15,11 +15,11 @@
               <div class="col-lg-6" style="background-color: white;">
                 <div class="p-5">
                   <div class="text-center">
-                    <h4 class="text-dark mb-4">Login Admin</h4>
+                    <h4 class="text-dark mb-4">Masuk Admin</h4>
                   </div>
                   <form class="user" action="<?= base_url("login") ?>" method="POST">
                     <div class="form-group">
-                      <input class="form-control form-control-user" type="text" placeholder="Username" name="username">
+                      <input autofocus class="form-control form-control-user" type="text" placeholder="Nama Pengguna" name="username">
                     </div>
                     <div style="position: relative;" class="form-group">
                       <input class="form-control input-sandi form-control-user" type="password" placeholder="Kata Sandi" name="password">
@@ -30,7 +30,7 @@
                         </svg>
                       </div>
                     </div>
-                    <button class="btn btn-custom-primary btn-block text-white btn-user" type="submit">LOGIN
+                    <button class="btn btn-custom-primary btn-block text-white btn-user" type="submit">MASUK
                     </button>
                   </form>
                   <!-- <div class="text-center">

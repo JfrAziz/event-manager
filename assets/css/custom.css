@@ -3,6 +3,13 @@ html {
     scroll-behavior: smooth;
 }
 
+.active-sideBar {
+    background-color: #bf4aa8;
+    border-radius: 0 10px 10px 0;
+    padding: 0.5rem 0 0.5rem 1rem;
+    margin: -0.5rem 0 -0.5rem -1rem;
+}
+
 .navigation {
     background-color: #973884;
 }

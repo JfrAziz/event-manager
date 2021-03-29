@@ -116,10 +116,6 @@ Router::get("/member/event", function () {
     (new Event())->index();
 });
 
-Router::get("/member/event", function () {
-    (new Event())->index();
-});
-
 Router::post("/member/event/register", function (Req $req, Res $res) {
     (new Event())->register($req);
 });

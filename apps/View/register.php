@@ -2,7 +2,7 @@
 
 <?php include_once "_partials/head.php" ?>
 
-<body class="">
+<body class="" style="display: flex; align-items: center">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-9 col-lg-12 col-xl-10">
@@ -19,7 +19,7 @@
                   </div>
                   <form class="user" action="<?= base_url("register") ?>" method="POST">
                     <div class="form-group">
-                      <input class="form-control form-control-user" type="text" placeholder="Username" name="username">
+                      <input autofocus class="form-control form-control-user" type="text" placeholder="Nama Pengguna" name="username">
                     </div>
                     <div class="form-group">
                       <input class="form-control form-control-user" type="text" placeholder="Nama Lengkap" name="fullname">
@@ -28,7 +28,7 @@
                       <input class="form-control form-control-user" type="email" placeholder="Email" name="email">
                     </div>
                     <div style="position: relative;" class="form-group">
-                      <input class="form-control input-sandi form-control-user" type="password" placeholder="Password" name="password">
+                      <input class="form-control input-sandi form-control-user" type="password" placeholder="Kata Sandi" name="password">
                       <div class="eye" style="user-select: none;">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="cursor: pointer;position: absolute; width: 1.25rem; right: 1rem; top: 1rem;">
                           <path fill-rule="evenodd" d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z" clip-rule="evenodd" />
@@ -37,7 +37,7 @@
                       </div>
                     </div>
                     <div style="position: relative;" class="form-group">
-                      <input class="form-control input-sandi form-control-user" type="password" placeholder="Konfirmasi Password" name="password_conf">
+                      <input class="form-control input-sandi form-control-user" type="password" placeholder="Konfirmasi Kata Sandi" name="password_conf">
                       <div class="eye" style="user-select: none;">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="cursor: pointer;position: absolute; width: 1.25rem; right: 1rem; top: 1rem;">
                           <path fill-rule="evenodd" d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z" clip-rule="evenodd" />

@@ -28,7 +28,8 @@ class Mail extends Controller
         $events->execute();
         $result_event = $events->fetchAll(PDO::FETCH_ASSOC);
         $data = [
-            "events" => $result_event
+            "events" => $result_event,
+            "bulkMailer" => true
         ];
         self::view("mail-bulk", $data);
     }

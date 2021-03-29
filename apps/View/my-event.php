@@ -14,7 +14,7 @@
         <?php include_once "_partials/header.php" ?>
 
         <div class="container-fluid">
-          <?php if(empty($data)): ?>
+          <?php if (empty($data)) : ?>
             <div class="text-center font-italic">
               Anda belum mengikuti event apapun
             </div>
@@ -28,7 +28,7 @@
                       <div class="text-uppercase text-custom-primary font-weight-bold mb-1">
                         <span><?= $item['name'] ?></span>
                       </div>
-                      <div class="text-dark text-sm mb-0">
+                      <div class="text-dark text-sm mb-0" style="text-align: justify;">
                         <?= htmlspecialchars_decode(stripslashes($item['description'])); ?>
                       </div>
                     </div>

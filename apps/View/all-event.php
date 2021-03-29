@@ -28,7 +28,7 @@
                       <div class="text-uppercase text-custom-primary font-weight-bold mb-1">
                         <span><?= $item['name'] ?></span>
                       </div>
-                      <div class="text-dark text-sm mb-0">
+                      <div class="text-dark text-sm mb-0" style="text-align: justify;">
                         <?= htmlspecialchars_decode(stripslashes($item['description'])); ?>
                       </div>
                     </div>

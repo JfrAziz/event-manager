@@ -10,20 +10,26 @@
 		<ul class="nav navbar-nav text-light" id="accordionSidebar">
 			<li class="nav-item" role="presentation">
 				<a class="nav-link" href="<?= base_url("/member/dashboard") ?>">
-					<i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
+					<div class="<?= ($dashboard) ? 'active-sideBar' : ''; ?>">
+						<i class="fas mr-2 fa-tachometer-alt"></i><span>Dashboard</span>
+					</div>
 				</a>
 			</li>
 
 			<hr class="sidebar-divider">
 			<div class="sidebar-heading">
-				<p class="mb-0">EVENT</p>
+				<p class="mb-0">ACARA</p>
 			</div>
 			<li class="nav-item" role="presentation">
 				<a class="nav-link" href="<?= base_url("/member/event") ?>">
-					<i class="fab fa-wpforms"></i><span class="ml-md-1">Semua Event</span>
+					<div class="<?= ($allEvent) ? 'active-sideBar' : ''; ?>">
+						<i class="fab fa-wpforms"></i><span class="ml-md-1">Semua Acara</span>
+					</div>
 				</a>
 				<a class="nav-link" href="<?= base_url("/member/certificate") ?>">
-					<i class="fas fa-medal"></i><span class="ml-md-1">Event Saya</span>
+					<div class="<?= ($myEvent) ? 'active-sideBar' : ''; ?>">
+						<i class="fas fa-medal"></i><span class="ml-md-1">Acara Saya</span>
+					</div>
 				</a>
 			</li>
 			<hr class="sidebar-divider">
@@ -33,23 +39,29 @@
 			</div>
 			<li class="nav-item" role="presentation">
 				<a class="nav-link" href="<?= base_url("/member/mail") ?>">
-					<i class="fas fa-mail-bulk"></i><span class="ml-md-1">Email Massal</span>
+					<div class="<?= ($bulkMailer) ? 'active-sideBar' : ''; ?>">
+						<i class="fas fa-mail-bulk"></i><span class="ml-md-1">Email Massal</span>
+					</div>
 				</a>
 			</li>
 
 			<hr class="sidebar-divider">
 
 			<div class="sidebar-heading">
-				<p class="mb-0">Events Admin</p>
+				<p class="mb-0">pengolahan acara</p>
 			</div>
 			<li class="nav-item" role="presentation">
 				<a class="nav-link" href="<?= base_url("/member/form") ?>">
-					<i class="fab fa-wpforms"></i><span class="ml-md-1">Pembuatan Event</span>
+					<div class="<?= ($eventMaker) ? 'active-sideBar' : ''; ?>">
+						<i class="fab fa-wpforms"></i><span class="ml-md-1">Pembuatan Acara</span>
+					</div>
 				</a>
 			</li>
 			<li class="nav-item" role="presentation">
 				<a class="nav-link" href="<?= base_url("/member/form/reg") ?>">
-					<i class="fa fa-eye"></i><span class="ml-md-1">Lihat Pendaftar</span>
+					<div class="<?= ($reg) ? 'active-sideBar' : ''; ?>">
+						<i class="fa fa-eye"></i><span class="ml-md-1">Lihat Pendaftar</span>
+					</div>
 				</a>
 			</li>
 		</ul>
@@ -59,3 +71,9 @@
 		</div>
 	</div>
 </nav>
+
+<script>
+	// $('.nav-link').click(function() {
+	// 	$(this).children().first().addClass('active-sideBar')
+	// })
+</script>

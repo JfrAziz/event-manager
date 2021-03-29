@@ -20,7 +20,7 @@
                   <div class="row">
                     <div class="col m-3">
                       <div class="row font-weight-bold">
-                        Tanggal Event
+                        Nama Acara
                       </div>
                       <div class="row">
                         <span><?= $data['name'] ?></span>
@@ -40,9 +40,9 @@
                   <div class="row">
                     <div class="col m-3">
                       <div class="row font-weight-bold">
-                        Deskripsi Event
+                        Deskripsi Acara
                       </div>
-                      <div class="row">
+                      <div class="row" style="text-align: justify;">
                         <span><?= htmlspecialchars_decode(stripslashes($data['description'])); ?></span>
                       </div>
                     </div>
@@ -50,7 +50,7 @@
                   <div class="row">
                     <div class="col m-3">
                       <div class="row font-weight-bold">
-                        Pembuat Event
+                        Pembuat Acara
                       </div>
                       <div class="row">
                         <span><?= $data['fullname'] ?></span>
@@ -63,7 +63,7 @@
             <div class="col col-md-3">
               <div class="card shadow">
                 <div class="card-header py-3">
-                  <p class="text-custom-primary m-0 font-weight-bold">Registrasi</p>
+                  <p class="text-custom-primary m-0 font-weight-bold">Pendaftaran</p>
                 </div>
                 <div class="card-body">
                   <div class="row">
@@ -72,7 +72,7 @@
                         <form action="<?= base_url("/member/event/register") ?>" method="post">
                           <input type="hidden" name="event_id" value="<?= $data['id'] ?>">
                           <?php if (!$registered) : ?>
-                            <input type="submit" value="REGISTER" class="btn btn-primary col">
+                            <input type="submit" value="DAFTAR" class="btn btn-primary col">
                           <?php else : ?>
                             <span>Anda sudah terdaftar</span>
                           <?php endif; ?>
